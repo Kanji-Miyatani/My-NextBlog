@@ -27,9 +27,10 @@ const Home: NextPage<Props> = ({articles}:Props) => {
   var mainArticle = articles[0];
   return (
     <Layout title="Home" description="text>>>">
+       
       <div className={styles.container}>
         <Head>
-          <title>Create Next App</title>
+          <title>やかんブログ</title>
           <meta name="description" content="記事未定。React記事で統一をするのも悪くないかも。" />
           <link rel="icon" href="/favicon.ico" />
         </Head>
@@ -47,11 +48,11 @@ const Home: NextPage<Props> = ({articles}:Props) => {
              blogTag={mainArticle.Tags} 
              imageSrc = {mainArticle.eyecatch.url} />
               {/* その他記事 */}
-            <Grid templateColumns='repeat(3, 1fr)' gap={6}>
+            <Grid className="container-" templateColumns='repeat(3, 1fr)' gap={6} mt="5" h="100%">
             {
               articles.map((article,i)=>(
                 i==0?<></>
-                :<GridItem w='100%' h='10'>
+                :<GridItem w='100%' >
                   <ArticleChild 
                   title={article.title} 
                   description={article.description}

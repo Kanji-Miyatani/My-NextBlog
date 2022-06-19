@@ -6,26 +6,33 @@ import {
   Badge
 } from '@chakra-ui/react';
 
-  interface IBlogChild{
-    title:string;
-    description:string;
-    imageSrc:string;
-    blogTag:Array<{name:string}>;
-    date:Date;
-  }
+interface IBlogChild{
+  title:string;
+  description:string;
+  imageSrc:string;
+  blogTag:Array<{name:string}>;
+  date:Date;
+}
 //記事一覧表示のアイテム
 function ArticleChild({title,description,imageSrc,blogTag,date}:IBlogChild) {
-  
+  var today = new Date();
+  today.setMonth(today.getMonth()-1);
+  var threeMonthAgo =today;
     return (
-      <Box maxW='sm' borderWidth='1px' borderRadius='lg' overflow='hidden'>
+      <Box className="article-child" maxW='sm' borderWidth='1px' borderRadius='lg' overflow='hidden'>
           <Link>
             {/* アイキャッチ */}
             <Image src={imageSrc} alt={"画像"} />
             <Box p='6'>
             <Box display='flex' alignItems='baseline'>
-                <Badge borderRadius='full' px='2' colorScheme='teal'>
-                New
-                </Badge>
+              {
+                  date >= threeMonthAgo?(
+                  <Badge borderRadius='full' px='2' colorScheme='teal'>
+                  New
+                  </Badge>
+                  )
+                  :(<></>)
+              }
             </Box>
                 {/* タイトル */}
             <Box

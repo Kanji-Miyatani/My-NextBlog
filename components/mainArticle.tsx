@@ -5,15 +5,8 @@ import {
   Link,
   Image,
   Text,
-  Divider,
-  HStack,
   Tag,
-  Wrap,
-  WrapItem,
-  SpaceProps,
   useColorModeValue,
-  Container,
-  VStack,
 } from '@chakra-ui/react';
 
   interface IBlogChild{
@@ -26,67 +19,50 @@ import {
 const MainArticle =({title,description,imageSrc,blogTag}:IBlogChild)=>{
     return (
         <>
-    <Container maxW={'7xl'} p="10" m="0" mt="5" border={"solid 1px"} borderColor={"blue.100"} borderRadius={"15px"}>
-      <Heading as="h1">{title}</Heading>
       <Box
-        marginTop={{ base: '1', sm: '5' }}
+       borderRadius={"15px"} bgColor={"white"}
+        maxW={'7xl'} minH={"30vh"} p="0" m="0"
         display="flex"
         flexDirection={{ base: 'column', sm: 'row' }}
         justifyContent="space-between">
-        <Box
-          display="flex"
-          flex="1"
-          marginRight="3"
-          position="relative"
-          alignItems="center">
           <Box
-            width={{ base: '100%', sm: '85%' }}
-            zIndex="2"
-            marginLeft={{ base: '0', sm: '5%' }}
-            marginTop="5%">
-            <Link textDecoration="none" _hover={{ textDecoration: 'none' }}>
+             className="Pickup-Image"
+             width={{ base: '100%', sm: '60%' }}
+             minH={{ base: '80%', sm: 'auto' }}
+             height={{ base: '120px', sm: 'auto' }}
+             >
               <Image
+                height={'100%'}
+                zIndex="2"
                 borderRadius="lg"
                 src={imageSrc}
                 alt="ブログイメージ"
-                objectFit="contain"
+                objectFit="cover"
               />
-            </Link>
           </Box>
-          <Box zIndex="1" width="100%" position="absolute" height="100%">
-            <Box
-              bgGradient={useColorModeValue(
-                'radial(orange.600 1px, transparent 1px)',
-                'radial(orange.300 1px, transparent 1px)'
-              )}
-              backgroundSize="20px 20px"
-              opacity="0.4"
-              height="100%"
-            />
+          <Box
+            className="Pickup-Text"
+            display="flex"
+            flex="1"
+            flexDirection="column"
+            justifyContent="center"
+            marginTop={{ base: '3', sm: '0' }}>
+              {
+                  blogTag?blogTag.map(tag=>(
+                      <Tag>{tag.name}</Tag>
+                  )):<></>
+              }
+          
+            <Text
+              as="p"
+              marginTop="2"
+              color={useColorModeValue('gray.700', 'gray.200')}
+              fontSize="lg">
+              {description}
+            </Text>
           </Box>
-        </Box>
-        <Box
-          display="flex"
-          flex="1"
-          flexDirection="column"
-          justifyContent="center"
-          marginTop={{ base: '3', sm: '0' }}>
-            {
-                blogTag?blogTag.map(tag=>(
-                    <Tag>{tag.name}</Tag>
-                )):<></>
-            }
-         
-          <Text
-            as="p"
-            marginTop="2"
-            color={useColorModeValue('gray.700', 'gray.200')}
-            fontSize="lg">
-            {description}
-          </Text>
-        </Box>
       </Box>
-    </Container></>
+      </>
     )
 } 
 

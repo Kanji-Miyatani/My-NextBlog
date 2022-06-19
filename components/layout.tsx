@@ -10,12 +10,12 @@ type Props = {
 
  export default function Layout({children,title,description}:Props){
     return(
-        <div className="container">
+        <Box>
             <Head>
                 <title>{title}</title>
                 <meta name="desctiption" content={description} />
             </Head>
             <Nav children={children}/>
-        </div>
+        </Box>
     )
  }
