@@ -1,13 +1,13 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import Layout from '../../components/layout';
 import ArticleChild from '../../components/articleChild';
 import MainChild from '../../components/mainArticle';
 import { client } from '../../lib/client';
-import {IArticle} from '../../interface/article'
-import {Box,Heading,Text,Grid,GridItem,Container} from '@chakra-ui/react'
+import {IArticle} from '../../interface/article';
+import NextImage from 'next/image'
+import {Box,Heading,Text,Grid,GridItem,} from '@chakra-ui/react'
 
 type Props ={
   articles : Array<IArticle>
@@ -26,20 +26,12 @@ const Home: NextPage<Props> = ({articles}:Props) => {
   //最新記事のみメイン記事として表示
   var mainArticle = articles[0];
   return (
-    <Layout title="Home" description="text>>>">
+    <Layout>
        
       <div className={styles.container}>
-        <Head>
-          <title>やかんブログ</title>
-          <meta name="description" content="記事未定。React記事で統一をするのも悪くないかも。" />
-          <link rel="icon" href="/favicon.ico" />
-        </Head>
-        <Heading textAlign={"center"} mt={"5"} mr={"3"}>
-          <Image 
-          src="/images/yakan_logo.png" 
-          width={500}
-          height={60} />
-        </Heading>
+       <Box w={"100%"} position="relative" h="400px">
+         <NextImage src="/images/wall.jpg" layout='fill' alt="メイン写真" />
+       </Box>
         <Box w={"100%"}>
           {/* メイン記事 */}
             <MainChild 
@@ -50,10 +42,11 @@ const Home: NextPage<Props> = ({articles}:Props) => {
               {/* その他記事 */}
             <Grid className="container-" templateColumns='repeat(3, 1fr)' gap={6} mt="5" h="100%">
             {
-              articles.map((article,i)=>(
-                i==0?<></>
-                :<GridItem w='100%' >
-                  <ArticleChild 
+              articles.map((article,index)=>(
+                index==0?<></>
+                :<GridItem w='100%' key={index}>
+                  <ArticleChild
+                  id ={article.id}
                   title={article.title} 
                   description={article.description}
                   blogTag={article.Tags} 

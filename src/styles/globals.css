@@ -15,3 +15,18 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.blog-container>p{
+    line-height: 2rem;
+}
+.blog-container a{
+  color: #4aac00;;
+  font-size: large;
+}
+.blog-container>h2{
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    border-bottom: 1px solid #EDF2F7;
+}

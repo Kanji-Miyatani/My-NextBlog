@@ -48,8 +48,8 @@ const MainArticle =({title,description,imageSrc,blogTag}:IBlogChild)=>{
             justifyContent="center"
             marginTop={{ base: '3', sm: '0' }}>
               {
-                  blogTag?blogTag.map(tag=>(
-                      <Tag>{tag.name}</Tag>
+                  blogTag?blogTag.map((tag,i)=>(
+                      <Tag key={i}>{tag.name}</Tag>
                   )):<></>
               }
           

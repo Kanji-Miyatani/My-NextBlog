@@ -5,7 +5,7 @@ export interface IArticle {
     publishedAt: string
     revisedAt: string
     title: string
-    body: string
+    content: string
     description:string
     eyecatch:{
         url: string
@@ -26,3 +26,14 @@ export interface IArticle {
     height: number
     width: number
   }
+
+export interface IPaths{
+   id:string
+}
+
+export interface IMicroCMSRes{
+  contents:IArticle[],
+  totalCount: number,
+    offset: number,
+    limit: number
+}

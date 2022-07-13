@@ -13,8 +13,14 @@ import {
   useDisclosure,
   BoxProps,
   FlexProps,
-  Divider
+  Divider,
+  InputRightElement,
+  InputGroup,
+  Button,
+  Input,
+  Heading
 } from '@chakra-ui/react';
+import {FaSearch} from "react-icons/fa"
 import {
   FiHome,
   FiTrendingUp,
@@ -39,7 +45,6 @@ interface LinkItemProps {
 }
 const LinkItems: Array<LinkItemProps> = [
   { name: 'ホーム', icon: FiHome ,link:"/" },
-  { name: '自己紹介', icon: FiTrendingUp ,link:"/About" },
   { name: '作品', icon: FiBook ,link:"/Works" },
   { name: 'ランキング', icon: FiStar ,link:"/Contact" }
 ];
@@ -59,6 +64,7 @@ export default function SimpleSidebar({ children }: { children: ReactNode }) {
         onClose={() => onClose}
         display={{ base: 'none', md: 'block' }}
       />
+      
       <Drawer
         autoFocus={false}
         isOpen={isOpen}
@@ -73,7 +79,7 @@ export default function SimpleSidebar({ children }: { children: ReactNode }) {
       </Drawer>
       {/* mobilenav */}
       <MobileNav display={{ base: 'flex', md: 'none' }} onOpen={onOpen} />
-      <Box ml={{ base: 0, md: 60 }} minH="100vh" p="4">
+      <Box ml={{ base: 0, md: 64 }} minH="100vh" p="4">
         {children}
       </Box>
 
@@ -91,27 +97,50 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
       bg={useColorModeValue('white', 'gray.900')}
       borderRight="1px"
       borderRightColor={useColorModeValue('gray.200', 'gray.700')}
-      w={{ base: 'full', md: 60 }}
+      borderRadius="6px"
+      ml="3"
+      mt="3"
+      w={{ base: 'full', md: 64 }}
       pos="fixed"
-      h="full"
+      h="800px"
       {...rest}>
-      <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
-        <Image src="/images/ya_logo.png"
-         width={30}
-         height={30} />
-        <CloseButton display={{ base: 'flex', md: 'none' }} onClick={onClose} />
+      <Flex h="10" display={{ base: 'flex', md: 'none' }} alignItems="center" mx="2" justifyContent="space-between">
+        <CloseButton onClick={onClose} />
       </Flex>
-      {LinkItems.map((link) => (
-        <NavItem key={link.name} icon={link.icon}>
+      <Flex h="20" alignItems="center" mx="3" justifyContent="space-between">
+     
+      <InputGroup size='md'>
+        <Input
+          pr='5rem'
+          placeholder='Search'
+        />
+        <InputRightElement width='3rem'>
+          <Button h='1.95rem' size='sm'>
+              <Icon
+                  fontSize="16"
+                  _groupHover={{
+                    color: 'white',
+                  }}
+                  as={FaSearch}
+                />
+          </Button>
+        </InputRightElement>
+      </InputGroup>
+      </Flex>
+      {LinkItems.map((link,i) => (
+        <NavItem key={i} icon={link.icon}>
           {link.name}
         </NavItem>
       ))}
-      <Divider />
-      {CategoryItems.map((link) => (
-        <NavItem key={link.name} icon={link.icon}>
+      <Divider mb={2} mt={2} />
+      {CategoryItems.map((link,i) => (
+        <NavItem key={i} icon={link.icon}>
           {link.name}
         </NavItem>
       ))}
+      <Box display={{md:"block",base:"none"}}>
+        <IntroductionCard/>
+      </Box>
     </Box>
   );
 };
@@ -125,13 +154,13 @@ const NavItem = ({ icon, children, ...rest }: NavItemProps) => {
     <Link href="#" style={{ textDecoration: 'none' }} _focus={{ boxShadow: 'none' }}>
       <Flex
         align="center"
-        p="4"
+        p="2.5"
         mx="4"
         borderRadius="lg"
         role="group"
         cursor="pointer"
         _hover={{
-          bg: 'cyan.400',
+          bg: 'gray.400',
           color: 'white',
         }}
         {...rest}>
@@ -173,11 +202,34 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
         icon={<FiMenu />}
       />
     <Box pl="2" pt="2">
-        <Image src="/images/ya_logo.png"
-            width={30}
-            height={30}
+        <Image src="/images/やかんロゴ.png"
+            width={300}
+            height={50}
             />
     </Box>
     </Flex>
   );
 };
+
+const IntroductionCard=()=>{
+  return(
+    <Box display={"flex"}
+         mb={2} mt={2} mx={2} p={"3px"} 
+        border={"1px"} borderColor={"gray.100"} borderRadius="5px"
+        shadow="md" flexDirection="column" alignItems={"center"}>
+     <Box display={"flex"} h={"80px"} m={3}>
+       <Box borderRadius={"50%"} overflow="hidden">
+         <Image src="/images/yakanKun.png" layout="fixed" objectFit="cover" height={80}width={80} />
+       </Box>
+       <Heading as='h4' size='md' w="50%" padding={"auto"} ml={3} my={"auto"} textAlign={"left"}>
+       Kanji Miyatani
+       </Heading>
+     </Box>
+     <Box m={3}>
+       <Text fontSize='15px' >
+         駆け出しエンジニア1年。<br/>趣味の制作はWebアプリ中心。<br/>仕事は業務系なのでC#メインで書いてます。
+       </Text>
+     </Box>
+   </Box>
+  )
+}
