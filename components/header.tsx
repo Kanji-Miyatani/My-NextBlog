@@ -28,7 +28,6 @@ const Header = () => {
       bg="gray.500"
       color="white"
       display={{ base: "none", md: "flex" }}
-      border={"1px"}
     >
       <Flex align="center" mr={5}>
         <Heading as="h1" size="lg" letterSpacing={"tighter"}>

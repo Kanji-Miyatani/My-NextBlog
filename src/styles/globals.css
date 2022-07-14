@@ -5,6 +5,14 @@ body {
   min-height: 100%;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    background-color: #CBD5E0;
+   
+}
+@media (max-width: 30em) {
+  /* 横幅が30em以下の場合に適用するスタイル */
+  html,body {  
+    font-size: 13px;
+   }
 }
 
 a {
@@ -20,11 +28,10 @@ a {
     line-height: 2rem;
 }
 .blog-container a{
-  color: #4aac00;;
-  font-size: large;
+  color: #4aac00;
 }
 .blog-container>h2{
-    font-size: 30px;
+    font-size: 1.5rem;
     font-weight: bold;
     margin-bottom: 1rem;
     margin-top: 1rem;

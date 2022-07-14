@@ -9,6 +9,7 @@ import {
   Link,
   Drawer,
   DrawerContent,
+  DrawerOverlay,
   Text,
   useDisclosure,
   BoxProps,
@@ -46,7 +47,7 @@ interface LinkItemProps {
 const LinkItems: Array<LinkItemProps> = [
   { name: 'ホーム', icon: FiHome ,link:"/" },
   { name: '作品', icon: FiBook ,link:"/Works" },
-  { name: 'ランキング', icon: FiStar ,link:"/Contact" }
+  { name: 'ブログ', icon: FiStar ,link:"/page/1" }
 ];
 
 const CategoryItems: Array<LinkItemProps> = [
@@ -59,12 +60,14 @@ const CategoryItems: Array<LinkItemProps> = [
 export default function SimpleSidebar({ children }: { children: ReactNode }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
-    <Box minH="100vh" bg={useColorModeValue('gray.100', 'gray.900')} className="class">
+    <Box minH="100vh" bg={useColorModeValue('gray.100', 'gray.900')} 
+    className="class" 
+    display={"flex"}
+    flexDirection={{base:"column",md:"row"}}>
       <SidebarContent
         onClose={() => onClose}
         display={{ base: 'none', md: 'block' }}
       />
-      
       <Drawer
         autoFocus={false}
         isOpen={isOpen}
@@ -72,14 +75,15 @@ export default function SimpleSidebar({ children }: { children: ReactNode }) {
         onClose={onClose}
         returnFocusOnClose={false}
         onOverlayClick={onClose}
-        size="full">
+        size="sm">
+        <DrawerOverlay/>
         <DrawerContent>
           <SidebarContent onClose={onClose} />
         </DrawerContent>
       </Drawer>
       {/* mobilenav */}
-      <MobileNav display={{ base: 'flex', md: 'none' }} onOpen={onOpen} />
-      <Box ml={{ base: 0, md: 64 }} minH="100vh" p="4">
+      <MobileNav display={{ base: 'flex', md: 'none' }} bgColor="gray.500" onOpen={onOpen} />
+      <Box minH="100vh" p={{sm:4,base:2}}>
         {children}
       </Box>
 
@@ -97,14 +101,16 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
       bg={useColorModeValue('white', 'gray.900')}
       borderRight="1px"
       borderRightColor={useColorModeValue('gray.200', 'gray.700')}
-      borderRadius="6px"
-      ml="3"
-      mt="3"
-      w={{ base: 'full', md: 64 }}
-      pos="fixed"
-      h="800px"
+      borderRadius="0px"
+      top={2}
+      w={{ base: "100%", md: 64 }}
+      shadow="sm"
+      my={{ base: 0, md: 3}}
+      ml={{ base: 0, md: 3}}
+      pos={{ base: 'initial', md: "sticky"}}
+      h={{ base: "100vh", md: "800px"}}
       {...rest}>
-      <Flex h="10" display={{ base: 'flex', md: 'none' }} alignItems="center" mx="2" justifyContent="space-between">
+      <Flex h="10" display={{ base: 'flex', md: 'none' }} alignItems="center" mx="2" w={"100%"} justifyContent="space-between">
         <CloseButton onClick={onClose} />
       </Flex>
       <Flex h="20" alignItems="center" mx="3" justifyContent="space-between">
@@ -128,13 +134,13 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
       </InputGroup>
       </Flex>
       {LinkItems.map((link,i) => (
-        <NavItem key={i} icon={link.icon}>
+        <NavItem key={i} icon={link.icon} link={link.link}>
           {link.name}
         </NavItem>
       ))}
       <Divider mb={2} mt={2} />
       {CategoryItems.map((link,i) => (
-        <NavItem key={i} icon={link.icon}>
+        <NavItem key={i} icon={link.icon} link={link.link}>
           {link.name}
         </NavItem>
       ))}
@@ -147,11 +153,12 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 
 interface NavItemProps extends FlexProps {
   icon: IconType;
+  link : string;
   children: ReactText;
 }
-const NavItem = ({ icon, children, ...rest }: NavItemProps) => {
+const NavItem = ({ icon,link, children, ...rest }: NavItemProps) => {
   return (
-    <Link href="#" style={{ textDecoration: 'none' }} _focus={{ boxShadow: 'none' }}>
+    <Link href={link} style={{ textDecoration: 'none' }} _focus={{ boxShadow: 'none' }}>
       <Flex
         align="center"
         p="2.5"
@@ -199,7 +206,7 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
         variant="outline"
         onClick={onOpen}
         aria-label="open menu"
-        icon={<FiMenu />}
+        icon={<FiMenu color='white' />}
       />
     <Box pl="2" pt="2">
         <Image src="/images/やかんロゴ.png"

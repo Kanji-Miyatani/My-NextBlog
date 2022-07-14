@@ -7,7 +7,7 @@ import styles from '../../styles/Home.module.css'
 import Layout from '../../../components/layout';
 import ArticleChild from '../../../components/articleChild';
 import {Box,Heading,Text,Grid,GridItem,Container} from '@chakra-ui/react'
-const MAX_PAGE = 10 as const;
+const MAX_PAGE =2 as const;
 type Prop={
     datas:IMicroCMSRes,
     page:number
@@ -33,22 +33,23 @@ const DynamicPage:NextPage<Prop> =({datas,page})=>{
                     <Grid className="container-" templateColumns='repeat(1, 1fr)' gap={6} mt="5" h="100%">
                     {
                     articles.map((article,index)=>(
-                        index==0?<></>
-                        :<GridItem w='100%' key={index}>
-                        <ArticleChild
-                        id ={article.id}
-                        title={article.title} 
-                        description={article.description}
-                        blogTag={article.Tags} 
-                        imageSrc = {article.eyecatch.url}
-                        date={new Date(article.updatedAt)}
-                        />
+                        <GridItem w='100%' key={index}>
+                            <ArticleChild
+                            id ={article.id}
+                            title={article.title} 
+                            description={article.description}
+                            blogTag={article.Tags} 
+                            imageSrc = {article.eyecatch.url}
+                            date={new Date(article.updatedAt)}
+                            />
                         </GridItem>
                     ))
                     }
                 </Grid>
                 </Box>
-                <Pagination className={styles.pagination} count={totalPagesCount} defaultPage={page} siblingCount={3} />
+                <Box >
+                    <Pagination className={styles.pagination} count={totalPagesCount} defaultPage={page} siblingCount={3} />
+                </Box>
             </div>
          </Layout>
         </>

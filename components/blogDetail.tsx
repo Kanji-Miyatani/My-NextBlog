@@ -7,6 +7,8 @@ type Props={
     article:IArticle
 }
 
+
+import 'highlight.js/styles/github.css';
 const BlogDetail=({article}:Props)=>{
     //目次の作成
     const title = article.title;
@@ -14,7 +16,7 @@ const BlogDetail=({article}:Props)=>{
     const html = article.content;
 
     return(
-        <Box bgColor={"white"} shadow="sm" px="3rem" py="2rem">
+        <Box bgColor={"white"} minW={"100%"} shadow="sm" px="3rem" py="2rem">
             <Box pb={"20px"} >
               <Heading as="h1" my={3}>{title}</Heading>
               <Text>作成日：{date.toDateString()}</Text>

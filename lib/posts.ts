@@ -1,5 +1,8 @@
 import {client} from  "./client";
 import {IArticle, IMicroCMSRes, IPaths} from "../interface/article"
+import * as cheerio from 'cheerio';
+import hljs from 'highlight.js/lib/core';
+import javascript from 'highlight.js/lib/languages/javascript';
 
 export async function getAllPosts():Promise<Array<IArticle>>{
     const data =await client.get({
@@ -23,7 +26,14 @@ export async function getPost(id:string):Promise<IArticle>{
                                     endpoint: 'blogs',
                                     queries: {filters: `id[equals]${id}`}
                                  });
-    return data.contents[0];
+    const $ = cheerio.load(data.content || "")
+    $("pre code").each((_, elm) => {
+      const result = hljs.highlightAuto($(elm).text())
+      $(elm).html(result.value)
+      $(elm).addClass("hljs")
+    })
+    data.content = $.html();
+    return data;
 }
 //全てのブログID取得
 export async function getAllPostIds():Promise<Array<IPaths>>{
