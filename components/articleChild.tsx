@@ -7,6 +7,7 @@ import {
 } from '@chakra-ui/react';
 import Link from 'next/link';
 import NextImage from 'next/image'
+import { ITags } from '../interface/article';
 
 
 interface IBlogChild{
@@ -14,7 +15,7 @@ interface IBlogChild{
   title:string;
   description:string;
   imageSrc:string;
-  blogTag:Array<{name:string}>;
+  blogTag:Array<ITags>;
   date:Date;
 }
 //記事説明の表示文字数
@@ -73,7 +74,7 @@ function ArticleChild({id,title,description,imageSrc,blogTag,date}:IBlogChild) {
                 {/*タグ*/}
                 <Box display='flex' mt='2' alignItems='center' overflow={"hidden"} h={"20%"}>
                     {blogTag.map((tag,i) => (
-                        <Badge key={i}>{tag.name}</Badge>
+                        <Badge key={i}>{tag.tag}</Badge>
                     ))}
                 {/* 日付 */}
                 </Box>

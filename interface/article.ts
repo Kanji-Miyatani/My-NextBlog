@@ -16,9 +16,16 @@ export interface IArticle {
         id: string
         name: string
     }
-    Tags: Array<{
-        name:string
-    }>
+    Tags: Array<ITags>
+  }
+
+  export interface ITags{
+    id:string
+    tag:string
+  }
+  export interface ICategories{
+    id:string
+    name:string
   }
 
   export interface IEyeCatch{
@@ -32,8 +39,21 @@ export interface IPaths{
 }
 
 export interface IMicroCMSRes{
-  contents:IArticle[],
   totalCount: number,
     offset: number,
     limit: number
+}
+
+export interface IMicroCMSBlogRes extends IMicroCMSRes{
+  contents:IArticle[]
+}
+
+export interface IMicroCMSCategoriesRes extends IMicroCMSRes{
+  contents:ICategories[]
+}
+
+export interface ITocs{
+  text:string,
+  id:string,
+  name:string,
 }

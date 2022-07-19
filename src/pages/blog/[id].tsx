@@ -1,5 +1,5 @@
 import Layout from '../../../components/layout';
-import { IArticle } from '../../../interface/article';
+import { IArticle, ITocs } from '../../../interface/article';
 import {getAllPostIds, getPost} from '../../../lib/posts';
 import { GetStaticProps, GetStaticPaths } from 'next'
 import { ParsedUrlQuery } from 'node:querystring';
@@ -7,6 +7,7 @@ import BlogDetail from '../../../components/blogDetail';
 //取得データ
 interface Props {
   item: IArticle
+
 }
 // 1. Paramsの型を定義し、ParsedUrlQueryをextendsする
 interface Params extends ParsedUrlQuery {
@@ -29,9 +30,7 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
 export const getStaticProps: GetStaticProps<Props, Params> = async ({
   params,
 }) => {
-  const item = await getPost(params!.id)
-
-  console.log(item)
+  const item = await getPost(params!.id);
   return {
     props: {
       item,
@@ -40,7 +39,6 @@ export const getStaticProps: GetStaticProps<Props, Params> = async ({
 }
 
 export default function Post({item}:Props) {
-  var html =item.content;
   return (
         <Layout> 
           <BlogDetail article={item}></BlogDetail>
