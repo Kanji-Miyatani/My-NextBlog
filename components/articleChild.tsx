@@ -5,7 +5,7 @@ import {
   Flex,
   Heading
 } from '@chakra-ui/react';
-import Link from 'next/link';
+import NextLink from 'next/link';
 import NextImage from 'next/image'
 import { ITags } from '../interface/article';
 
@@ -30,7 +30,7 @@ function ArticleChild({id,title,description,imageSrc,blogTag,date}:IBlogChild) {
 
     return (
       <Box className="article-child" borderWidth='1px' borderRadius='lg' h={{base:150,sm:150}} overflow="hidden"  bgColor={'white'} shadow="sm" _hover={{shadow:"lg",cursor:"pointer"}}>
-          <Link href={`/blog/${id}`} >
+          <NextLink href={`/blog/${id}`} >
             {/* アイキャッチ */}
             <Box   
             display="flex"
@@ -74,7 +74,7 @@ function ArticleChild({id,title,description,imageSrc,blogTag,date}:IBlogChild) {
                 {/*タグ*/}
                 <Box display='flex' mt='2' alignItems='center' overflow={"hidden"} h={"20%"}>
                     {blogTag.map((tag,i) => (
-                        <Badge key={i}>{tag.tag}</Badge>
+                        <Badge key={i}><NextLink href="tags/">{tag.tag}</NextLink></Badge>
                     ))}
                 {/* 日付 */}
                 </Box>
@@ -83,7 +83,7 @@ function ArticleChild({id,title,description,imageSrc,blogTag,date}:IBlogChild) {
                 </Box>
               </Flex>
             </Box>
-          </Link>
+          </NextLink>
       </Box>
     )
   }

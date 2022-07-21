@@ -84,7 +84,7 @@ export default function SimpleSidebar({ children }: { children: ReactNode }) {
       </Drawer>
       {/* mobilenav */}
       <MobileNav display={{ base: 'flex', md: 'none' }} bgColor="gray.500" onOpen={onOpen} />
-      <Box minH="100vh" p={{sm:4,base:2}}>
+      <Box minH="100vh" p={{sm:4,base:2}} w="100%">
         {children}
       </Box>
 

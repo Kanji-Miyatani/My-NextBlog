@@ -33,13 +33,7 @@ const Home: NextPage<Props> = ({articles}:Props) => {
          <NextImage src="/images/wall.jpg" layout='fill' alt="メイン写真" />
        </Box>
         <Box w={"100%"}>
-          {/* メイン記事 */}
-            <MainChild 
-             title={mainArticle.title} 
-             description={mainArticle.description}
-             blogTag={mainArticle.Tags} 
-             imageSrc = {mainArticle.eyecatch.url} />
-              {/* その他記事 */}
+            {/* その他記事 */}
             <Grid className="container-" templateColumns='repeat(3, 1fr)' gap={6} mt="5" h="100%">
             {
               articles.map((article,index)=>(

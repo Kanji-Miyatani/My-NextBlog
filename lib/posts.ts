@@ -20,17 +20,17 @@ export async function getPostsInPages(count:number,offset:number):Promise<IMicro
     return data;
 }
 
-export async function getPostsInCategories(count:number,offset:number,id:string):Promise<IMicroCMSCategoriesRes>{
-  const data:IMicroCMSCategoriesRes =await client.get({
+export async function getPostsInCategories(count:number,offset:number,id:string):Promise<IMicroCMSBlogRes>{
+  const data:IMicroCMSBlogRes =await client.get({
                                                         endpoint: 'blogs',
-                                                        queries: {filters: `id[equals]${id}`, limit: count, offset: offset}
+                                                        queries: {filters: `category[equals]${id}`, limit: count, offset: offset}
                                                         });
   return data;
 }
 export async function getPostsCountInCategories(id:string):Promise<number>{
   const data:IMicroCMSCategoriesRes =await client.get({
                                                         endpoint: 'blogs',
-                                                        queries: {filters: `id[equals]${id}`,fields: "totalcount"}
+                                                        queries: {filters: `category[equals]${id}`,fields: "totalcount"}
                                                         });
   return data.totalCount;
 }
@@ -53,6 +53,13 @@ export async function getPost(id:string):Promise<IArticle>{
 export async function GetAllCategories():Promise<ICategories[]>{
     const data :IMicroCMSCategoriesRes=await client.get({endpoint:"categories"});
     return data.contents;
+}
+//IDからカテゴリ名取得
+export async function GetCategoryName(id:string):Promise<string>{
+  const data :IMicroCMSCategoriesRes=await client.get({endpoint:"categories",
+                                                        queries:{filters:`id[equals]${id}`,fields:'name'}
+                                                      });
+  return data.contents[0].name;
 }
 //全てのブログID取得
 export async function getAllPostIds():Promise<Array<IPaths>>{
