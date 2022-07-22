@@ -6,6 +6,8 @@ import { ICategories, IMicroCMSBlogRes } from '../../../../../interface/article'
 import Layout from '../../../../../components/layout';
 import { Box,Heading} from '@chakra-ui/react';
 import BlogList from '../../../../../components/blogList';
+import Seo from "../../../../../components/Seo";
+
 const MAX_PAGE =2 as const;
 type Prop={
   data:IMicroCMSBlogRes,
@@ -24,6 +26,7 @@ const CategoryPage:NextPage<Prop> =({categoryName,data,page})=>{
   return(
       <>
        <Layout>
+        <Seo title={`カテゴリ:${categoryName}`} isHome={true} imageUrl={""} description={`やかんブログの${categoryName}の記事一覧です。`} />
         <Box textAlign="center">
           <Heading padding={3}>カテゴリ：{categoryName}</Heading>
         </Box>

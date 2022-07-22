@@ -6,13 +6,16 @@ import Image from 'next/image'
 import styles from '../../styles/Home.module.css'
 import Layout from '../../../components/layout';
 import ArticleChild from '../../../components/articleChild';
+import { createTheme } from '@mui/material/styles';
+import Seo from "../../../components/Seo";
 import {Box,Heading,Text,Grid,GridItem,Container} from '@chakra-ui/react'
+import BlogList from "../../../components/blogList";
 const MAX_PAGE =2 as const;
 type Prop={
     datas:IMicroCMSBlogRes,
     page:number
 }
-import { createTheme } from '@mui/material/styles';
+
 
 export const theme = createTheme({
   palette: {
@@ -27,30 +30,8 @@ const DynamicPage:NextPage<Prop> =({datas,page})=>{
     return(
         <>
          <Layout>
-            <div className={styles.container}>
-                <Box w={"100%"}>
-                    {/* その他記事 */}
-                    <Grid className="container-" templateColumns='repeat(1, 1fr)' gap={6} mt="5" h="100%">
-                    {
-                    articles.map((article,index)=>(
-                        <GridItem w='100%' key={index}>
-                            <ArticleChild
-                            id ={article.id}
-                            title={article.title} 
-                            description={article.description}
-                            blogTag={article.Tags} 
-                            imageSrc = {article.eyecatch.url}
-                            date={new Date(article.updatedAt)}
-                            />
-                        </GridItem>
-                    ))
-                    }
-                </Grid>
-                </Box>
-                <Box >
-                    <Pagination className={styles.pagination} count={totalPagesCount} defaultPage={page} siblingCount={3} />
-                </Box>
-            </div>
+            <Seo title='ブログ一覧' isHome={true} imageUrl={""} description="やかんブログの記事一覧です。" />
+            <BlogList  datas={datas} page={page}  />
          </Layout>
         </>
     )

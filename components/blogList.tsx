@@ -6,6 +6,8 @@ import styles from '../src/styles/Home.module.css'
 import {Box,Heading,Text,Grid,GridItem,Container} from '@chakra-ui/react'
 import { createTheme } from '@mui/material/styles';
 import ArticleChild from "./articleChild";
+import React from "react";
+import { useRouter } from "next/router";
 
 const MAX_PAGE =2 as const;
 type Prop={
@@ -21,6 +23,14 @@ export const theme = createTheme({
 });
 const BlogList =({datas,page}:Prop)=>{
     var totalPagesCount = Math.ceil(datas.totalCount/MAX_PAGE);
+    const router = useRouter();
+    const handlePageChange = (event: React.ChangeEvent<unknown>, page: number) => {
+        let {pathname} = router;
+        pathname = `${pathname.match(/[0-9]*$/)??[0]}${page}`;
+        router.push({
+            pathname
+        })
+    }
     const articles = datas.contents;
     return(
         <>
@@ -45,7 +55,7 @@ const BlogList =({datas,page}:Prop)=>{
                 </Grid>
                 </Box>
                 <Box mt={4}>
-                    <Pagination className={styles.pagination} count={totalPagesCount} defaultPage={page} siblingCount={3} />
+                    <Pagination onChange={handlePageChange} className={styles.pagination} count={totalPagesCount} page={page} siblingCount={3} />
                 </Box>
             </div>
         </>

@@ -39,6 +39,10 @@ import { IconType } from 'react-icons';
 import { ReactText } from 'react';
 import Image from 'next/image'
 import MyProfile from './myProfile';
+import { ICategories } from '../interface/article';
+type Prop={
+  
+}
 
 interface LinkItemProps {
   name: string;
@@ -47,18 +51,18 @@ interface LinkItemProps {
 }
 const LinkItems: Array<LinkItemProps> = [
   { name: 'ホーム', icon: FiHome ,link:"/" },
-  { name: '作品', icon: FiBook ,link:"/ArtWorks" },
+  { name: '作品', icon: FiBook ,link:"/artworks" },
   { name: 'ブログ', icon: FiStar ,link:"/page/1" }
 ];
 
 const CategoryItems: Array<LinkItemProps> = [
-    { name: 'React', icon: SiReact ,link:"/" },
-    { name: 'ASP.net', icon: SiDotnet ,link:"/About" },
-    { name: 'Unity', icon: SiUnity ,link:"/Works" },
-    { name: '日常', icon: FiStar ,link:"/Contact" }
+    { name: 'ウェブ開発', icon: SiReact ,link:"category/web/page/1" },
+    { name: '設計思想', icon: SiReact ,link:"category/design/page/1" },
+    { name: '効率化', icon: SiDotnet ,link:"category/optimization/page/1" },
+    { name: 'チュートリアル', icon: FiStar ,link:"category/tutorial/page/1" }
   ];
 
-export default function SimpleSidebar({ children }: { children: ReactNode }) {
+export default function SimpleSidebar({ children}: { children: ReactNode}) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <Box minH="100vh" bg={useColorModeValue('gray.100', 'gray.900')} 
@@ -213,6 +217,7 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
         <Image src="/images/やかんロゴ.png"
             width={300}
             height={50}
+            alt="ロゴ"
             />
     </Box>
     </Flex>

@@ -8,6 +8,7 @@ import { client } from '../../lib/client';
 import {IArticle} from '../../interface/article';
 import NextImage from 'next/image'
 import {Box,Heading,Text,Grid,GridItem,} from '@chakra-ui/react'
+import Seo from '../../components/Seo';
 
 type Props ={
   articles : Array<IArticle>
@@ -24,21 +25,20 @@ export async function getStaticProps(){
 
 const Home: NextPage<Props> = ({articles}:Props) => {
   //最新記事のみメイン記事として表示
-  var mainArticle = articles[0];
+  var displayArticles = articles.slice(0,10);
   return (
     <Layout>
-       
+      <Seo title='ホーム' isHome={true} imageUrl={""} description="やかんのブログ｜トップページ" />
       <div className={styles.container}>
-       <Box w={"100%"} position="relative" h="400px">
-         <NextImage src="/images/wall.jpg" layout='fill' alt="メイン写真" />
+       <Box w={"100%"} position="relative" h="30vh">
+         <NextImage src="/images/YakanHome.png" layout='fill' objectFit='cover' alt="メイン写真" />
        </Box>
         <Box w={"100%"}>
             {/* その他記事 */}
-            <Grid className="container-" templateColumns='repeat(3, 1fr)' gap={6} mt="5" h="100%">
+            <Grid className="container-" templateColumns='repeat(1, 1fr)' gap={6} mt="5" h="100%">
             {
-              articles.map((article,index)=>(
-                index==0?<></>
-                :<GridItem w='100%' key={index}>
+              displayArticles.map((article,index)=>(
+              <GridItem w='100%' key={index}>
                   <ArticleChild
                   id ={article.id}
                   title={article.title} 

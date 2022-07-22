@@ -4,6 +4,7 @@ import {getAllPostIds, getPost} from '../../../lib/posts';
 import { GetStaticProps, GetStaticPaths } from 'next'
 import { ParsedUrlQuery } from 'node:querystring';
 import BlogDetail from '../../../components/blogDetail';
+import Seo from '../../../components/Seo';
 //取得データ
 interface Props {
   item: IArticle
@@ -41,6 +42,7 @@ export const getStaticProps: GetStaticProps<Props, Params> = async ({
 export default function Post({item}:Props) {
   return (
         <Layout> 
+            <Seo title={item.title} isHome={false} imageUrl={""} description={`${item.title}|${item.description}`} />
           <BlogDetail article={item}></BlogDetail>
         </Layout>
         )

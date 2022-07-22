@@ -74,7 +74,7 @@ function ArticleChild({id,title,description,imageSrc,blogTag,date}:IBlogChild) {
                 {/*タグ*/}
                 <Box display='flex' mt='2' alignItems='center' overflow={"hidden"} h={"20%"}>
                     {blogTag.map((tag,i) => (
-                        <Badge key={i}><NextLink href="tags/">{tag.tag}</NextLink></Badge>
+                        <Badge ml={1} key={i}><Box>{tag.tag}</Box></Badge>
                     ))}
                 {/* 日付 */}
                 </Box>

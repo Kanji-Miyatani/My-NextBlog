@@ -14,7 +14,7 @@ function ContentsTable(prop:Prop) {
         {tocs.map(toc=>{
             const marginLeft = toc.name=="h2"?"0":"1rem";
             return(
-            <ListItem ml={marginLeft} mb="4px" color={"gray.500"} _hover={{color:"gray.600",cursor:"pointer"}}>
+            <ListItem key={toc.id} ml={marginLeft} mb="4px" color={"gray.500"} _hover={{color:"gray.600",cursor:"pointer"}}>
                 <Scroll to={toc.id}>- {toc.text}</Scroll>
             </ListItem>
         )})}

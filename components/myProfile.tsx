@@ -1,5 +1,9 @@
-import { Box ,Heading,Text} from "@chakra-ui/react"
+import { Box ,Flex,Heading,Text} from "@chakra-ui/react"
 import NextImage from "next/image"
+import {
+  AiFillTwitterCircle,
+  AiFillGithub
+} from 'react-icons/ai'; 
 const MyProfile=()=>{
     return(
       <Box display={"flex"}
@@ -20,6 +24,10 @@ const MyProfile=()=>{
            駆け出しエンジニア1年。<br/>趣味の制作はWebアプリ中心。<br/>仕事は業務系なのでC#メインで書いてます。
          </Text>
        </Box>
+       <Flex>
+         <Box><AiFillTwitterCircle color="#00acee" size="2.4rem" /></Box>
+         <Box><AiFillGithub color="#000000" size="2.4rem" /></Box>
+       </Flex>
      </Box>
     )
   }

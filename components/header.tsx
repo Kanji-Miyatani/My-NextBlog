@@ -7,7 +7,8 @@ import {
   Text,
   Button,
   useDisclosure,
-  Icon
+  Icon,
+  Link
 } from "@chakra-ui/react";
 import {
     AiFillInstagram
@@ -30,12 +31,16 @@ const Header = () => {
       display={{ base: "none", md: "flex" }}
     >
       <Flex align="center" mr={5}>
-        <Heading as="h1" size="lg" letterSpacing={"tighter"}>
-            <NextImage src="/images/やかんロゴ.png"
-                width={300}
-                height={50}
-                />
-        </Heading>
+        <NextLink href="/">
+          <Link>
+            <Heading as="h1" size="lg" letterSpacing={"tighter"}>
+                <NextImage src="/images/やかんロゴ.png"
+                    width={300}
+                    height={50}
+                    />
+            </Heading>
+          </Link>
+        </NextLink>
       </Flex>
 
       <Stack

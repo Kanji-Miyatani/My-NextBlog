@@ -9,6 +9,8 @@ export async function getAllPosts():Promise<Array<IArticle>>{
                             endpoint: 'blogs',
                             });
                             console.log(data);
+                            
+  console.log(process.env);
     return data.contents;
 }
 

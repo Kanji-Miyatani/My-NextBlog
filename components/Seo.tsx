@@ -1,0 +1,22 @@
+import Head from "next/head";
+type Props = {
+    title?:string
+    description?:string,
+    imageUrl : string,
+    isHome:boolean
+}
+export default function Seo({title,description,imageUrl,isHome=false}:Props){
+    const pageTitle = `${title}:やかんBlog`
+    return(
+    <Head>
+    <title>{pageTitle}</title>
+     <meta charSet="utf-8"></meta>
+     <meta name="description" content={description} />
+     <meta property="og:title" content={pageTitle}/>
+     <meta property="og:description" content={description}/>
+     <meta property="og:type" content={isHome?'website':'article'}/>
+     <meta property="og:site_name" content="やかんブログ" />
+     <meta property="og:image" content={imageUrl}/>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+</Head>
+)}
