@@ -9,8 +9,8 @@ export const chakraTheme = extendTheme({
   styles: {
     global: {
       body: {
-        backgroundColor: "gray.300",
-        color: "gray.800"
+        backgroundColor: "cray.50",
+        color: "teal.900"
       }
     }
   }

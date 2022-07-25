@@ -61,6 +61,9 @@ a {
     margin-bottom: 1.5rem;
     margin-top: 3rem;
 }
+.blog-container img{
+  margin: 1.5rem 0;
+}
 /* スクロールバー */
 ::-webkit-scrollbar {
   width: 17px;               
@@ -71,4 +74,29 @@ a {
   border-radius: 10px;                     
   box-shadow: inset 0 0 10px 10px #2b316b; 
   border: double 2px gray;           
+}
+
+blockquote {
+  position: relative;
+  margin: 1.5rem 0;
+  padding: 15px 15px 10px 15px;
+  box-sizing: border-box;
+  font-style: italic;
+  background: #f5f5f5;
+  color: #777777;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.14);
+}
+
+
+blockquote p {
+  padding: 0;
+  margin: 7px 0;
+  line-height: 1.7;
+}
+
+blockquote cite {
+  display: block;
+  text-align: right;
+  color: #888888;
+  font-size: 0.9em;
 }

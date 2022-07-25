@@ -66,10 +66,17 @@ const CategoryItems: Array<LinkItemProps> = [
 export default function SimpleSidebar({ children}: { children: ReactNode}) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
-    <Box minH="100vh" bg={useColorModeValue('gray.100', 'gray.900')} 
+    <Box minH="100vh" 
     className="class" 
     display={"flex"}
+    w={{base:"100%",sm:"1160px"}}
+    mx={{base:0,sm:"auto"}}
     flexDirection={{base:"column",md:"row"}}>
+      {/* mobilenav */}
+      <MobileNav display={{ base: 'flex', md: 'none' }} bgColor="teal.500" onOpen={onOpen} />
+       <Box minH="100vh" p={{sm:4,base:2}} w="100%">
+        {children}
+      </Box>
       <SidebarContent
         onClose={() => onClose}
         display={{ base: 'none', md: 'block' }}
@@ -87,11 +94,7 @@ export default function SimpleSidebar({ children}: { children: ReactNode}) {
           <SidebarContent onClose={onClose} />
         </DrawerContent>
       </Drawer>
-      {/* mobilenav */}
-      <MobileNav display={{ base: 'flex', md: 'none' }} bgColor="gray.500" onOpen={onOpen} />
-      <Box minH="100vh" p={{sm:4,base:2}} w="100%">
-        {children}
-      </Box>
+     
 
     </Box>
   );
@@ -104,13 +107,12 @@ interface SidebarProps extends BoxProps {
 const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
   return (
     <Box
-      bg={useColorModeValue('white', 'gray.900')}
-      borderRight="1px"
-      borderRightColor={useColorModeValue('gray.200', 'gray.700')}
+      bg={useColorModeValue('white', 'teal.900')}
+      borderLeft="1px"
+      borderLeftColor={useColorModeValue('gray.200', 'gray.700')}
       borderRadius="0px"
       top={2}
       w={{ base: "100%", md: 64 }}
-      shadow="sm"
       my={{ base: 0, md: 3}}
       ml={{ base: 0, md: 3}}
       pos={{ base: 'initial', md: "sticky"}}
@@ -119,37 +121,43 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
       <Flex h="10" display={{ base: 'flex', md: 'none' }} alignItems="center" mx="2" w={"100%"} justifyContent="space-between">
         <CloseButton onClick={onClose} />
       </Flex>
-      <Flex h="20" alignItems="center" mx="3" justifyContent="space-between">
-     
-      <InputGroup size='md'>
-        <Input
-          pr='5rem'
-          placeholder='Search'
-        />
-        <InputRightElement width='3rem'>
-          <Button h='1.95rem' size='sm'>
-              <Icon
-                  fontSize="16"
-                  _groupHover={{
-                    color: 'white',
-                  }}
-                  as={FaSearch}
-                />
-          </Button>
-        </InputRightElement>
-      </InputGroup>
-      </Flex>
-      {LinkItems.map((link,i) => (
-        <NavItem key={i} icon={link.icon} link={link.link}>
-          {link.name}
-        </NavItem>
-      ))}
-      <Divider mb={2} mt={2} />
-      {CategoryItems.map((link,i) => (
-        <NavItem key={i} icon={link.icon} link={link.link}>
-          {link.name}
-        </NavItem>
-      ))}
+      <Box 
+      className='navLinks' 
+      shadow="md"
+      mb={2} mt={2} mx={2} p={"3px"} 
+      border={"1px"} borderColor={"gray.100"} borderRadius="5px"
+      py="0.5rem">
+        <Flex h="20" alignItems="center" mx="3" justifyContent="space-between">
+          <InputGroup size='md'>
+            <Input
+              pr='5rem'
+              placeholder='Search'
+            />
+            <InputRightElement width='3rem'>
+              <Button h='1.95rem' size='sm'>
+                  <Icon
+                      fontSize="16"
+                      _groupHover={{
+                        color: 'white',
+                      }}
+                      as={FaSearch}
+                    />
+              </Button>
+            </InputRightElement>
+          </InputGroup>
+        </Flex>
+        {LinkItems.map((link,i) => (
+          <NavItem key={i} icon={link.icon} link={link.link}>
+            {link.name}
+          </NavItem>
+        ))}
+        <Divider color={useColorModeValue('gray.200', 'gray.700')} mb={2} mt={2} />
+        {CategoryItems.map((link,i) => (
+          <NavItem key={i} icon={link.icon} link={link.link}>
+            {link.name}
+          </NavItem>
+        ))}
+      </Box>
       <Box display={{md:"block",base:"none"}}>
         <MyProfile/>
       </Box>
@@ -174,7 +182,7 @@ const NavItem = ({ icon,link, children, ...rest }: NavItemProps) => {
           role="group"
           cursor="pointer"
           _hover={{
-            bg: 'gray.400',
+            bg: 'teal.400',
             color: 'white',
           }}
           {...rest}>
@@ -205,9 +213,9 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
       px={{ base: 4, md: 24 }}
       height="20"
       alignItems="center"
-      bg={useColorModeValue('white', 'gray.900')}
+      bg={useColorModeValue('white', 'teal.900')}
       borderBottomWidth="1px"
-      borderBottomColor={useColorModeValue('gray.200', 'gray.700')}
+      borderBottomColor={useColorModeValue('teal.200', 'teal.700')}
       justifyContent="flex-start"
       {...rest}>
       <IconButton

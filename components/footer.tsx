@@ -1,4 +1,5 @@
 import {Box} from "@chakra-ui/react"
+import BreadCrumb from "./breadCrumb"
 import MyProfile from "./myProfile"
 
 function footer() {
@@ -7,6 +8,9 @@ function footer() {
         {/* モバイル用 */}
         <Box display={{base:"block",sm:"none"}}>
             <MyProfile />
+        </Box>
+        <Box bg={"teal.500"} textAlign="center" p="1rem">
+          <BreadCrumb></BreadCrumb>
         </Box>
     </Box>
   )

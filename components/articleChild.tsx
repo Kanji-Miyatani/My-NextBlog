@@ -30,8 +30,8 @@ function ArticleChild({id,title,description,imageSrc,blogTag,date}:IBlogChild) {
 
     return (
       <Box className="article-child" borderWidth='1px' borderRadius='lg' h={{base:150,sm:150}} overflow="hidden"  bgColor={'white'} shadow="sm" _hover={{shadow:"lg",cursor:"pointer"}}>
-        <a>
           <NextLink href={`/blog/${id}`} >
+            <a>
             {/* アイキャッチ */}
             <Box   
             display="flex"
@@ -84,8 +84,8 @@ function ArticleChild({id,title,description,imageSrc,blogTag,date}:IBlogChild) {
                 </Box>
               </Flex>
             </Box>
+            </a>
           </NextLink>
-        </a>
       </Box>
     )
   }

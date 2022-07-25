@@ -9,7 +9,7 @@ type Props = {
 
  export default function Layout({children}:Props){
     return(
-        <Box w={{sm:1160,base:"auto"}} my={{sm:"1rem",base:0}} mx="auto" shadow="lg">
+        <Box w={{sm:"auto",base:"auto"}} my={0} mx="auto" shadow="lg">
            
             <Header/>
             <Nav>{children}</Nav>
