@@ -34,9 +34,9 @@ const Header = () => {
         <NextLink href="/">
           <Link>
             <Heading as="h1" size="lg" letterSpacing={"tighter"}>
-                <NextImage src="/images/やかんロゴ.png"
-                    width={300}
-                    height={50}
+                <NextImage src="/images/YakanBlogLogo.png"
+                    width={220}
+                    height={49}
                     />
             </Heading>
           </Link>
@@ -58,11 +58,13 @@ const Header = () => {
         display={{ base: isOpen ? "block" : "none", md: "block" }}
         mt={{ base: 4, md: 0 }}
       >
-        <Button
-          variant="outline"
-        >
-          Q&A
-        </Button>
+        <a target="_blank" rel="noreferrer noopener" href="https://docs.google.com/forms/d/e/1FAIpQLSdfzaFNZ--xRiYA15fiD3w8Jd71rlERllqlhTZOyQsJM-p88w/viewform?usp=sf_link">
+          <Button
+            variant="outline"
+          >
+            ご質問・ご意見
+          </Button>
+        </a>
       </Box>
     </Flex>
   );

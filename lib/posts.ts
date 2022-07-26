@@ -1,5 +1,5 @@
 import {client} from  "./client";
-import {IArticle, ICategories, IMicroCMSBlogRes, IMicroCMSCategoriesRes, IMicroCMSRes, IPaths,ITags,ITocs} from "../interface/article"
+import {IArticle, ICategories, ICategoryCount, IMicroCMSBlogRes, IMicroCMSCategoriesRes, IMicroCMSRes, IPaths,ITags,ITocs} from "../interface/article"
 import * as cheerio from 'cheerio';
 import hljs from 'highlight.js/lib/core';
 import javascript from 'highlight.js/lib/languages/javascript';
@@ -10,8 +10,27 @@ export async function getAllPosts():Promise<Array<IArticle>>{
                             });
                             console.log(data);
                             
-  console.log(process.env);
     return data.contents;
+}
+
+export async function getCategoryCount():Promise<Array<ICategoryCount>>{
+  const data:IMicroCMSBlogRes = await client.get({
+                              endpoint: 'blogs',
+                              queries: {fields: 'id,name,category'}
+                            });
+  data.contents.reduce((result:ICategoryCount[],content:IArticle)=>{
+      const elem =result.find(x=>x.id=content.id);
+      if(elem){
+          elem.count++;
+      }else{
+        result.push({
+          name:content.category.name,
+          id:content.category.id,
+          count:1
+        })
+      }
+      return result;
+  })
 }
 
 export async function getPostsInPages(count:number,offset:number):Promise<IMicroCMSBlogRes>{

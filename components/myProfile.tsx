@@ -1,4 +1,4 @@
-import { Box ,Flex,Heading,Text} from "@chakra-ui/react"
+import { Box ,Flex,Heading,Text,Link,Spacer} from "@chakra-ui/react"
 import NextImage from "next/image"
 import {
   AiFillTwitterCircle,
@@ -16,17 +16,22 @@ const MyProfile=()=>{
            <NextImage src="/images/yakanKun.png" layout="fixed" objectFit="cover" height={80}width={80} />
          </Box>
          <Heading as='h4' size='md' w="50%" padding={"auto"} ml={3} my={"auto"} textAlign={"left"}>
-         Kanji Miyatani
+          Yakan
          </Heading>
        </Box>
        <Box m={3}>
          <Text fontSize='15px' >
-           駆け出しエンジニア1年。<br/>趣味の制作はWebアプリ中心。<br/>仕事は業務系なのでC#メインで書いてます。
+           岐阜で生まれし、関西の<br/>趣味の制作はWebアプリ中心。<br/>仕事は業務系なのでC#メインで書いてます。
          </Text>
        </Box>
-       <Flex>
-         <Box><AiFillTwitterCircle color="#00acee" size="2.4rem" /></Box>
-         <Box><AiFillGithub color="#000000" size="2.4rem" /></Box>
+       <Flex mb={2}>
+          <Link href="">
+            <Box _hover={{opacity:"0.7"}} p={1}><AiFillTwitterCircle color="#00acee" size="2.4rem" /></Box>
+          </Link>
+          <Link href="">
+            <Box _hover={{opacity:"0.7",size:"2rem"}} p={1}><AiFillGithub color="#000000" size="2.4rem" /></Box>
+          </Link>
+         
        </Flex>
      </Box>
     )

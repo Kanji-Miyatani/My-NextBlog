@@ -31,6 +31,7 @@ import {
   FiSettings,
   FiMenu,
 } from 'react-icons/fi';
+import {VscDebugBreakpointLogUnverified} from "react-icons/vsc"
   import {
     SiDotnet,
     SiReact,
@@ -41,13 +42,14 @@ import { ReactText } from 'react';
 import Image from 'next/image'
 import MyProfile from './myProfile';
 import { ICategories } from '../interface/article';
-type Prop={
-  
-}
+
+import { useContext } from 'react';
+import { MicroCMSProvider } from 'pages/_app';
+
 
 interface LinkItemProps {
   name: string;
-  icon: IconType;
+  icon: IconType ;
   link :string;
 }
 const LinkItems: Array<LinkItemProps> = [
@@ -57,10 +59,10 @@ const LinkItems: Array<LinkItemProps> = [
 ];
 
 const CategoryItems: Array<LinkItemProps> = [
-    { name: 'ウェブ開発', icon: SiReact ,link:"category/web/page/1" },
-    { name: '設計思想', icon: SiReact ,link:"category/design/page/1" },
-    { name: '効率化', icon: SiDotnet ,link:"category/optimization/page/1" },
-    { name: 'チュートリアル', icon: FiStar ,link:"category/tutorial/page/1" }
+    { name: 'ウェブ開発', icon: VscDebugBreakpointLogUnverified ,link:"category/web/page/1" },
+    { name: '設計思想', icon: VscDebugBreakpointLogUnverified ,link:"category/design/page/1" },
+    { name: '効率化', icon: VscDebugBreakpointLogUnverified ,link:"category/optimization/page/1" },
+    { name: 'チュートリアル', icon: VscDebugBreakpointLogUnverified ,link:"category/tutorial/page/1" }
   ];
 
 export default function SimpleSidebar({ children}: { children: ReactNode}) {
@@ -69,12 +71,12 @@ export default function SimpleSidebar({ children}: { children: ReactNode}) {
     <Box minH="100vh" 
     className="class" 
     display={"flex"}
-    w={{base:"100%",sm:"1160px"}}
+    w={{base:"100%",sm:"1260px"}}
     mx={{base:0,sm:"auto"}}
     flexDirection={{base:"column",md:"row"}}>
       {/* mobilenav */}
-      <MobileNav display={{ base: 'flex', md: 'none' }} bgColor="teal.500" onOpen={onOpen} />
-       <Box minH="100vh" p={{sm:4,base:2}} w="100%">
+      <MobileNav display={{ base: 'flex', md: 'none' }} bgColor="teal.400" onOpen={onOpen} />
+       <Box minH="100vh" p={{sm:4,base:2}} w={{sm:"80%",base:"100%"}}>
         {children}
       </Box>
       <SidebarContent
@@ -112,7 +114,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
       borderLeftColor={useColorModeValue('gray.200', 'gray.700')}
       borderRadius="0px"
       top={2}
-      w={{ base: "100%", md: 64 }}
+      w={{ base: "100%", sm: "auto" }}
       my={{ base: 0, md: 3}}
       ml={{ base: 0, md: 3}}
       pos={{ base: 'initial', md: "sticky"}}
@@ -147,13 +149,14 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
           </InputGroup>
         </Flex>
         {LinkItems.map((link,i) => (
-          <NavItem key={i} icon={link.icon} link={link.link}>
+          <NavItem key={i} pl="2" icon={link.icon} link={link.link}>
             {link.name}
           </NavItem>
         ))}
         <Divider color={useColorModeValue('gray.200', 'gray.700')} mb={2} mt={2} />
+        <Text px="3" py="1" color="gray.500">カテゴリ</Text>
         {CategoryItems.map((link,i) => (
-          <NavItem key={i} icon={link.icon} link={link.link}>
+          <NavItem icon={link.icon} key={i} link={link.link}>
             {link.name}
           </NavItem>
         ))}
@@ -176,8 +179,9 @@ const NavItem = ({ icon,link, children, ...rest }: NavItemProps) => {
         <Link  style={{ textDecoration: 'none' }} _focus={{ boxShadow: 'none' }}>
         <Flex
           align="center"
-          p="2.5"
-          mx="4"
+          p="3"
+          mx="2"
+          w="200px"
           borderRadius="lg"
           role="group"
           cursor="pointer"
@@ -188,7 +192,7 @@ const NavItem = ({ icon,link, children, ...rest }: NavItemProps) => {
           {...rest}>
           {icon && (
             <Icon
-              mr="4"
+              mr="2"
               fontSize="16"
               _groupHover={{
                 color: 'white',
@@ -225,9 +229,9 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
         icon={<FiMenu color='white' />}
       />
     <Box pl="2" pt="2">
-        <Image src="/images/やかんロゴ.png"
-            width={300}
-            height={50}
+        <Image src="/images/YakanBlogLogo.png"
+            width={180}
+            height={40}
             alt="ロゴ"
             />
     </Box>

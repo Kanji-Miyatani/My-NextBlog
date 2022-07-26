@@ -4,6 +4,7 @@ import {Box,Heading,Text} from '@chakra-ui/react';
 import 'highlight.js/styles/vs2015.css';
 import { getTocs } from "../lib/dataConvert";
 import ContentsTable from "./contentsTable";
+import {ToDateString} from "../lib/dateService";
 type Props={
     article:IArticle
 }
@@ -18,7 +19,7 @@ const BlogDetail=({article}:Props)=>{
         <Box bgColor={"white"} minW={"100%"} shadow="sm" px="3rem" py="2rem">
             <Box pb={"20px"} >
               <Heading as="h1" my={3}>{title}</Heading>
-              <Text>作成日：{date.toDateString()}</Text>
+              <Text>作成日：{ToDateString(date)}</Text>
             </Box>
             <Box pb={"20px"} >
                 <ContentsTable tocs={tocs}/>

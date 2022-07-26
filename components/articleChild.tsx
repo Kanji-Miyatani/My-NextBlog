@@ -23,7 +23,7 @@ const MAX_DESCRIPTION_LENGTH=75;
 //記事一覧表示のアイテム
 function ArticleChild({id,title,description,imageSrc,blogTag,date}:IBlogChild) {
   var today = new Date();
-  today.setMonth(today.getMonth()-3);
+  today.setMonth(today.getMonth()-1);
   var threeMonthAgo =today;
   description = description?.length>MAX_DESCRIPTION_LENGTH ? description.substring(0,MAX_DESCRIPTION_LENGTH)+"...":description;
 
@@ -62,7 +62,7 @@ function ArticleChild({id,title,description,imageSrc,blogTag,date}:IBlogChild) {
                       lineHeight='tight'
                       noOfLines={2}
                     >
-                    <Heading as='h4' size='md'padding={"auto"} my={"auto"} textAlign={"left"}>
+                    <Heading as='h4' size='md'padding={"auto"} my={"auto"} textAlign={"left"} >
                       {title}
                     </Heading>
                   </Box>
