@@ -57,3 +57,7 @@ export interface ITocs{
   id:string,
   name:string,
 }
+
+export interface ICategoryCount extends ICategories{
+  count :number;
+}

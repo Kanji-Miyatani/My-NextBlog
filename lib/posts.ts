@@ -18,7 +18,8 @@ export async function getCategoryCount():Promise<Array<ICategoryCount>>{
                               endpoint: 'blogs',
                               queries: {fields: 'id,name,category'}
                             });
-  data.contents.reduce((result:ICategoryCount[],content:IArticle)=>{
+  //カテゴリでGroupBy的な処理
+  return data.contents.reduce((result:ICategoryCount[],content:IArticle)=>{
       const elem =result.find(x=>x.id=content.id);
       if(elem){
           elem.count++;
@@ -30,7 +31,7 @@ export async function getCategoryCount():Promise<Array<ICategoryCount>>{
         })
       }
       return result;
-  })
+  },[])
 }
 
 export async function getPostsInPages(count:number,offset:number):Promise<IMicroCMSBlogRes>{

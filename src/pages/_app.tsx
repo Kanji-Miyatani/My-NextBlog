@@ -4,8 +4,6 @@ import { ChakraProvider } from '@chakra-ui/react'
 import { ThemeProvider } from '@mui/material'
 import { createTheme } from '@mui/material/styles';
 import { extendTheme } from "@chakra-ui/react";
-import React,{ useContext } from 'react';
-import { getCategoryCount } from '../../lib/posts';
 
 export const chakraTheme = extendTheme({
   styles: {
@@ -24,15 +22,12 @@ export const muiTheme = createTheme({
     },
   },
 });
+
 function MyApp({ Component, pageProps }:AppProps) {
-  const categorysCount = getCategoryCount();
-  const MicroCMSProvider = React.createContext(categorysCount);
   return (
     <ThemeProvider theme={muiTheme}>
       <ChakraProvider theme={chakraTheme}>
-      <MicroCMSProvider.Provider value={categorysCount}>
-        <Component {...pageProps} />
-      </MicroCMSProvider.Provider>
+          <Component {...pageProps} />
       </ChakraProvider>
     </ThemeProvider>
   )
