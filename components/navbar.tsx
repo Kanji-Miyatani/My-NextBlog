@@ -44,7 +44,6 @@ import MyProfile from './myProfile';
 import { ICategories } from '../interface/article';
 
 import { useContext } from 'react';
-import { MicroCMSProvider } from 'pages/_app';
 
 
 interface LinkItemProps {
@@ -76,7 +75,7 @@ export default function SimpleSidebar({ children}: { children: ReactNode}) {
     flexDirection={{base:"column",md:"row"}}>
       {/* mobilenav */}
       <MobileNav display={{ base: 'flex', md: 'none' }} bgColor="teal.400" onOpen={onOpen} />
-       <Box minH="100vh" p={{sm:4,base:2}} w={{sm:"80%",base:"100%"}}>
+       <Box minH="100vh" p={{sm:4,base:2}} w={{sm:"77%",base:"100%"}}>
         {children}
       </Box>
       <SidebarContent
@@ -113,12 +112,12 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
       borderLeft="1px"
       borderLeftColor={useColorModeValue('gray.200', 'gray.700')}
       borderRadius="0px"
-      top={2}
-      w={{ base: "100%", sm: "auto" }}
+      top={1}
+      w={{ base: "100%", sm: "250px" }}
       my={{ base: 0, md: 3}}
       ml={{ base: 0, md: 3}}
-      pos={{ base: 'initial', md: "sticky"}}
-      h={{ base: "100vh", md: "800px"}}
+      pos={{ base: 'initial', md: "initial"}}
+      h={{ base: "100vh", md: "80vh"}}
       {...rest}>
       <Flex h="10" display={{ base: 'flex', md: 'none' }} alignItems="center" mx="2" w={"100%"} justifyContent="space-between">
         <CloseButton onClick={onClose} />
@@ -129,7 +128,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
       mb={2} mt={2} mx={2} p={"3px"} 
       border={"1px"} borderColor={"gray.100"} borderRadius="5px"
       py="0.5rem">
-        <Flex h="20" alignItems="center" mx="3" justifyContent="space-between">
+        <Flex alignItems="center" mx="3" my="2" justifyContent="space-between">
           <InputGroup size='md'>
             <Input
               pr='5rem'
@@ -179,9 +178,8 @@ const NavItem = ({ icon,link, children, ...rest }: NavItemProps) => {
         <Link  style={{ textDecoration: 'none' }} _focus={{ boxShadow: 'none' }}>
         <Flex
           align="center"
-          p="3"
+          p="2"
           mx="2"
-          w="200px"
           borderRadius="lg"
           role="group"
           cursor="pointer"
