@@ -42,7 +42,7 @@ export const getStaticProps: GetStaticProps<Props, Params> = async ({
 export default function Post({item}:Props) {
   return (
         <Layout> 
-            <Seo title={item.title} isHome={false} imageUrl={""} description={`${item.title}|${item.description}`} path={`blog/${item.id}`}/>
+            <Seo title={item.title} isHome={false} imageUrl={item.eyecatch.url} description={`${item.title}|${item.description}`} path={`blog/${item.id}`}/>
           <BlogDetail article={item}></BlogDetail>
         </Layout>
         )
