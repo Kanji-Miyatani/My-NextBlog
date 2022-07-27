@@ -68,33 +68,32 @@ export default function SimpleSidebar({ children}: { children: ReactNode}) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <Box minH="100vh" 
-    className="class" 
     display={"flex"}
     w={{base:"100%",sm:"1260px"}}
     mx={{base:0,sm:"auto"}}
-    flexDirection={{base:"column",md:"row"}}>
-      {/* mobilenav */}
-      <MobileNav display={{ base: 'flex', md: 'none' }} bgColor="teal.400" onOpen={onOpen} />
-       <Box minH="100vh" p={{sm:4,base:1}} w={{sm:"77%",base:"100%"}}>
-        {children}
-      </Box>
-      <SidebarContent
-        onClose={() => onClose}
-        display={{ base: 'none', md: 'block' }}
-      />
-      <Drawer
-        autoFocus={false}
-        isOpen={isOpen}
-        placement="left"
-        onClose={onClose}
-        returnFocusOnClose={false}
-        onOverlayClick={onClose}
-        size="sm">
-        <DrawerOverlay/>
-        <DrawerContent>
-          <SidebarContent onClose={onClose} />
-        </DrawerContent>
-      </Drawer>
+    flexDirection={{base:"column",sm:"row"}}
+    >
+        <MobileNav display={{ base: 'flex', md: 'none' }} bgColor="teal.400" onOpen={onOpen} />
+        <Box minH="100vh" p={{sm:4,base:1}} w={{sm:"77%",base:"100%"}}>
+          {children}
+        </Box>
+        <SidebarContent
+          onClose={() => onClose}
+          display={{ base: 'none', md: 'block' }}
+        />
+        <Drawer
+          autoFocus={false}
+          isOpen={isOpen}
+          placement="left"
+          onClose={onClose}
+          returnFocusOnClose={false}
+          onOverlayClick={onClose}
+          size="sm">
+          <DrawerOverlay/>
+          <DrawerContent>
+            <SidebarContent onClose={onClose} />
+          </DrawerContent>
+        </Drawer>
      
 
     </Box>
@@ -116,8 +115,10 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
       w={{ base: "100%", sm: "250px" }}
       my={{ base: 0, md: 3}}
       ml={{ base: 0, md: 3}}
-      pos={{ base: 'initial', md: "initial"}}
-      h={{ base: "100vh", md: "80vh"}}
+      pos={{ base: 'initial', md: "sticky"}}
+      h={{ base: "100vh", md: "100%"}}
+      minH={{ base: "100vh", md: "100%"}}
+      minW="0"
       {...rest}>
       <Flex h="10" display={{ base: 'flex', md: 'none' }} alignItems="center" mx="2" w={"100%"} justifyContent="space-between">
         <CloseButton onClick={onClose} />
