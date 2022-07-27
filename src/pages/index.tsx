@@ -31,7 +31,7 @@ const Home: NextPage<Props> = ({articles}:Props) => {
   var displayArticles = articles.slice(0,10);
   return (
     <Layout>
-      <Seo title='ホーム' isHome={true} imageUrl={""} description="やかんのブログ｜トップページ" />
+      <Seo title='ホーム' isHome={true} imageUrl={""} description="やかんのブログ｜トップページ" path="" />
       <div className={styles.container}>
        <Box w={"100%"} position="relative" minH="290px">
         <HomeEyeCatch/>

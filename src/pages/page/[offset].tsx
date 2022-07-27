@@ -30,7 +30,7 @@ const DynamicPage:NextPage<Prop> =({datas,page})=>{
     return(
         <>
          <Layout>
-            <Seo title='ブログ一覧' isHome={true} imageUrl={""} description="やかんブログの記事一覧です。" />
+            <Seo title='ブログ一覧' isHome={true} imageUrl={""} description="やかんブログの記事一覧です。" path="page/1" />
             <BlogList  datas={datas} page={page}  />
          </Layout>
         </>

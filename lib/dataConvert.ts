@@ -1,5 +1,6 @@
 
 import * as cheerio from 'cheerio';
+import { getDomainLocale } from 'next/dist/shared/lib/router/router';
 import { IArticle, ITocs } from '../interface/article';
 
 export function getTocs(article:IArticle):ITocs[]{
@@ -12,4 +13,8 @@ export function getTocs(article:IArticle):ITocs[]{
      }));
    
     return toc;
+}
+
+export const getDomain=():string=>{
+  return "https://my-next-blog-orpin.vercel.app"
 }

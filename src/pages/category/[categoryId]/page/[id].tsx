@@ -12,7 +12,8 @@ const MAX_PAGE =2 as const;
 type Prop={
   data:IMicroCMSBlogRes,
   page:number,
-  categoryName:string
+  categoryName:string,
+  categoryId:string
 }
 
 export const theme = createTheme({
@@ -22,11 +23,11 @@ palette: {
   },
 },
 });
-const CategoryPage:NextPage<Prop> =({categoryName,data,page})=>{
+const CategoryPage:NextPage<Prop> =({categoryName,data,page,categoryId})=>{
   return(
       <>
        <Layout>
-        <Seo title={`カテゴリ:${categoryName}`} isHome={true} imageUrl={""} description={`やかんブログの${categoryName}の記事一覧です。`} />
+        <Seo title={`カテゴリ:${categoryName}`} isHome={true} imageUrl={""} description={`やかんブログの${categoryName}の記事一覧です。`} path={`category/${categoryId}/page/1`} />
         <Box textAlign="center">
           <Heading padding={3}>カテゴリ：{categoryName}</Heading>
         </Box>
@@ -66,7 +67,8 @@ export const getStaticProps:GetStaticProps=async({params})=>{
     props:{
       data,
       categoryPage,
-      categoryName
+      categoryName,
+      categoryId
     }
    }
 }

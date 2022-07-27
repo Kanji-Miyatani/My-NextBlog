@@ -5,7 +5,7 @@ import Seo from "../../../components/Seo";
 const ArtWorks:NextPage=()=>{
   return (
     <Layout>
-     <Seo title={'作品'} isHome={false} imageUrl={""} description={'やかんの作品集'} />
+     <Seo title={'作品'} isHome={false} imageUrl={""} description={'やかんの作品集'} path={"artworks"} />
       <div>Coming soon...</div>
     </Layout>
   )
