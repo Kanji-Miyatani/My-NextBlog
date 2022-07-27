@@ -11,6 +11,7 @@ import NextLink from 'next/link';
 import {Box,Heading,Text,Grid,GridItem, Button,} from '@chakra-ui/react'
 import {GrNext} from 'react-icons/gr'
 import Seo from '../../components/Seo';
+import HomeEyeCatch from '../../components/homeEyeCatch';
 
 type Props ={
   articles : Array<IArticle>
@@ -32,8 +33,8 @@ const Home: NextPage<Props> = ({articles}:Props) => {
     <Layout>
       <Seo title='ホーム' isHome={true} imageUrl={""} description="やかんのブログ｜トップページ" />
       <div className={styles.container}>
-       <Box w={"100%"} position="relative" h="30vh">
-         <NextImage src="/images/YakanHome.png" layout='fill' objectFit='cover' alt="メイン写真" />
+       <Box w={"100%"} position="relative" minH="290px">
+        <HomeEyeCatch/>
        </Box>
         <Box w={"100%"} mt={5}>
           <Heading as="h4" fontSize={20} borderBottom="2px double gray" mx="auto" mb="3" textAlign="center">

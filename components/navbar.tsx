@@ -75,7 +75,7 @@ export default function SimpleSidebar({ children}: { children: ReactNode}) {
     flexDirection={{base:"column",md:"row"}}>
       {/* mobilenav */}
       <MobileNav display={{ base: 'flex', md: 'none' }} bgColor="teal.400" onOpen={onOpen} />
-       <Box minH="100vh" p={{sm:4,base:2}} w={{sm:"77%",base:"100%"}}>
+       <Box minH="100vh" p={{sm:4,base:1}} w={{sm:"77%",base:"100%"}}>
         {children}
       </Box>
       <SidebarContent
