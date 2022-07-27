@@ -10,7 +10,7 @@ body {
 @media (max-width: 30em) {
   /* 横幅が30em以下の場合に適用するスタイル */
   html,body {  
-    font-size: 14px;
+    font-size: 15px;
    }
 }
 

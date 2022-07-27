@@ -28,15 +28,28 @@ function ArticleChildBox({id,title,description,imageSrc,blogTag,date,categoryNam
   description = description?.length>MAX_DESCRIPTION_LENGTH ? description.substring(0,MAX_DESCRIPTION_LENGTH)+"...":description;
  
     return (
-        <Box className="article-child-box" w={{sm:260,base:"100%"}} h={{sm:270,base:230}} bg="white" boxShadow="md" _hover={{boxShadow:"xl",opacity:"0.8"}} rounded="xl" p="6" overflow="hidden">
+        <Box className="article-child-box" w={{sm:280,base:"100%"}} h={{sm:280,base:"72vw"}} bg="white" boxShadow="md" _hover={{boxShadow:"xl",opacity:"0.8"}} rounded="md" p="6" overflow="hidden">
           <NextLink href={`/blog/${id}`} >
             <a>
-                <Box position="relative" maxH={{sm:120,base:130}} h={{sm:120,base:120}} mt="-6" mx="-6" pos="relative" overflow='hidden'>
-                  {
-                    aMonthAgo<date?(
-                      <Badge position="relative" zIndex={10} bgColor="teal.100" left={2}>new</Badge>
-                    ):<></>
-                  }
+                <Box position="relative" maxH={{sm:175,base:"45vw"}} h={{sm:175,base:"45vw"}} mt="-6" mx="-6" pos="relative" overflow='hidden'>
+                 
+                   <Flex
+                      color="blue.500"
+                      fontWeight="800"
+                      fontSize="xs"
+                      letterSpacing="wide"
+                      position="relative" zIndex={10}
+                      top="0.2rem"
+                    >
+                       {
+                          aMonthAgo<date?(
+                            <Badge position="relative" zIndex={10} bgColor="teal.100" left={2}>new</Badge>
+                          ):<></>
+                        }
+                        {blogTag.map((tag,i) => (
+                          <Badge ml={1} key={i}><Box>{tag.tag}</Box></Badge>
+                      ))}
+                    </Flex>
                   <NextImage
                     src={imageSrc}
                     alt="記事画像"
@@ -47,16 +60,7 @@ function ArticleChildBox({id,title,description,imageSrc,blogTag,date,categoryNam
             </a>
           </NextLink>
           <Stack mt="2" verticalAlign="center">
-            <Flex
-              color="blue.500"
-              fontWeight="800"
-              fontSize="xs"
-              letterSpacing="wide"
-            >
-                {blogTag.map((tag,i) => (
-                  <Badge ml={1} key={i}><Box>{tag.tag}</Box></Badge>
-              ))}
-            </Flex>
+           
             <NextLink href={`/blog/${id}`} >
             <a>
               <Heading as='h4' color="gray.700" padding="auto" my="auto" size='md' noOfLines={2}>
@@ -66,11 +70,11 @@ function ArticleChildBox({id,title,description,imageSrc,blogTag,date,categoryNam
           </NextLink>
           </Stack>
           <Stack mt="2" direction="row" spacing="4" align="center">
-            <Stack direction="column" spacing="0" fontSize="sm">
-            <NextLink href={`/category/${categoryID}/page/1`} >
-              <Link fontWeight="600">{categoryName}</Link>
-            </NextLink>
-              <Text color="gray.500">{ToDateString(date)}</Text>
+            <Stack direction="row" spacing="0" fontSize="sm">
+              <Text color="gray.500" mr="1rem">{ToDateString(date)}</Text>
+              <NextLink href={`/category/${categoryID}/page/1`} >
+                <Link fontWeight="600">{categoryName}</Link>
+              </NextLink>
             </Stack>
           </Stack>
         </Box>
