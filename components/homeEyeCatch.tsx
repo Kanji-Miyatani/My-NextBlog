@@ -46,7 +46,7 @@ const MotionBox: React.FC<MotionBoxProps> = motion(chakra.div);
             >
             <Image src='/images/やかんの無料アイコン素材.png' alt="やかんのアイコン"></Image>
             </MotionBox>
-             <Collapse in={isClicked}  initialScale={0.9}>
+             <Collapse in={isClicked}>
                 <Box m="1">
                     <Box 
                     m="30px" noOfLines={{sm:4,base:6}} fontFamily="serif" fontSize="1.4rem" fontWeight="medium" bgColor="white" boxShadow="0 0 14px 15px #ffffff" textAlign="center" borderRadius="50%" p="1rem" w={{sm:"300px",base:"150px"}}>
