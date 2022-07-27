@@ -9,7 +9,8 @@ type Props = {
 }
 export default function Seo({title,description,imageUrl,isHome=false,path}:Props){
     const pageTitle = `${title}:やかんBlog`
-    const url = getDomain();
+    console.log(imageUrl)
+    const url = getDomain()+path;
     return(
     <Head>
     <title>{pageTitle}</title>
