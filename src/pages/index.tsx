@@ -81,7 +81,7 @@ const Home: NextPage<Props> = ({articles}:Props) => {
                 <List>
                   {
                     displayArticles.map((article,index)=>(
-                    <ListItem w='100%' key={index}>
+                    <ListItem w='100%' mb="0.5rem" key={index}>
                         <ArticleChild
                         id ={article.id}
                         title={article.title} 
