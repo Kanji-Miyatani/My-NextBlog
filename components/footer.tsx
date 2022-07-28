@@ -1,16 +1,23 @@
 import {Box} from "@chakra-ui/react"
+import { IBreadCrumbData } from "../interface/domestic"
 import BreadCrumb from "./breadCrumb"
 import MyProfile from "./myProfile"
-
-function footer() {
+type Props={
+  breadCrumbData:IBreadCrumbData
+}
+function footer({breadCrumbData}:Props) {
   return (
     <Box>
         {/* モバイル用 */}
-        <Box display={{base:"block",sm:"none"}}>
+        <Box display={{base:"block",md:"none"}}>
             <MyProfile />
         </Box>
         <Box bg={"teal.500"} textAlign="center" p="1rem">
-          <BreadCrumb></BreadCrumb>
+          <BreadCrumb 
+          nowPage={breadCrumbData.nowPage}
+          nowPagePath={breadCrumbData.nowPagePath}
+          parentPage={breadCrumbData.parentPage}
+          parentPagePath={breadCrumbData.parentPagePath} />
         </Box>
     </Box>
   )

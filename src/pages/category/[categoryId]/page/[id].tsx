@@ -7,6 +7,7 @@ import Layout from '../../../../../components/layout';
 import { Box,Heading} from '@chakra-ui/react';
 import BlogList from '../../../../../components/blogList';
 import Seo from "../../../../../components/Seo";
+import { CreateBreadCrumbdata } from '../../../../../lib/dataConvert';
 
 const MAX_PAGE =2 as const;
 type Prop={
@@ -26,7 +27,7 @@ palette: {
 const CategoryPage:NextPage<Prop> =({categoryName,data,page,categoryId})=>{
   return(
       <>
-       <Layout>
+       <Layout breadCrumbData={CreateBreadCrumbdata(categoryName,`category/${categoryId}/page/1`,)}>
         <Seo title={`カテゴリ:${categoryName}`} isHome={true} imageUrl={""} description={`やかんブログの${categoryName}の記事一覧です。`} path={`category/${categoryId}/page/1`} />
         <Box textAlign="center">
           <Heading padding={3}>カテゴリ：{categoryName}</Heading>
@@ -44,8 +45,9 @@ export const getStaticPaths:GetStaticPaths =async () =>{
         .then((totalCount) => {
           const range = (start: number, end: number) =>
             [...Array(end - start + 1)].map((_, i) => start + i)
-
-          return range(1, Math.ceil(totalCount / MAX_PAGE)).map(
+          let rangeEnd =  Math.ceil(totalCount / MAX_PAGE);
+          rangeEnd = rangeEnd==0?1:rangeEnd;//記事数0でも表示
+          return range(1, rangeEnd).map(
             (repo) => `/category/${item.id}/page/${repo}`
           )
         })

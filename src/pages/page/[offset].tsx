@@ -10,6 +10,7 @@ import { createTheme } from '@mui/material/styles';
 import Seo from "../../../components/Seo";
 import {Box,Heading,Text,Grid,GridItem,Container} from '@chakra-ui/react'
 import BlogList from "../../../components/blogList";
+import { CreateBreadCrumbdata } from "../../../lib/dataConvert";
 const MAX_PAGE =2 as const;
 type Prop={
     datas:IMicroCMSBlogRes,
@@ -29,7 +30,7 @@ const DynamicPage:NextPage<Prop> =({datas,page})=>{
     const articles = datas.contents;
     return(
         <>
-         <Layout>
+         <Layout breadCrumbData={CreateBreadCrumbdata("ブログ一覧",`page/${page}`,)}>
             <Seo title='ブログ一覧' isHome={true} imageUrl={""} description="やかんブログの記事一覧です。" path="page/1" />
             <BlogList  datas={datas} page={page}  />
          </Layout>

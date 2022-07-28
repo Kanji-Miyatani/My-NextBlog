@@ -25,25 +25,18 @@ import NextLink from 'next/link'
 import {FaSearch} from "react-icons/fa"
 import {
   FiHome,
-  FiTrendingUp,
   FiStar,
   FiBook,
-  FiSettings,
   FiMenu,
 } from 'react-icons/fi';
+import {
+  MdToday
+} from 'react-icons/md';
 import {VscDebugBreakpointLogUnverified} from "react-icons/vsc"
-  import {
-    SiDotnet,
-    SiReact,
-    SiUnity
-  } from 'react-icons/si'; 
 import { IconType } from 'react-icons';
 import { ReactText } from 'react';
 import Image from 'next/image'
 import MyProfile from './myProfile';
-import { ICategories } from '../interface/article';
-
-import { useContext } from 'react';
 
 
 interface LinkItemProps {
@@ -51,30 +44,32 @@ interface LinkItemProps {
   icon: IconType ;
   link :string;
 }
+//メニュー一覧
 const LinkItems: Array<LinkItemProps> = [
   { name: 'ホーム', icon: FiHome ,link:"/" },
   { name: '作品', icon: FiBook ,link:"/artworks" },
   { name: 'ブログ', icon: FiStar ,link:"/page/1" }
 ];
-
+//カテゴリ一覧
 const CategoryItems: Array<LinkItemProps> = [
-    { name: 'ウェブ開発', icon: VscDebugBreakpointLogUnverified ,link:"category/web/page/1" },
-    { name: '設計思想', icon: VscDebugBreakpointLogUnverified ,link:"category/design/page/1" },
+    { name: 'Web開発', icon: VscDebugBreakpointLogUnverified ,link:"category/web/page/1" },
+    { name: 'デザイン・設計', icon: VscDebugBreakpointLogUnverified ,link:"category/design/page/1" },
     { name: '効率化', icon: VscDebugBreakpointLogUnverified ,link:"category/optimization/page/1" },
-    { name: 'チュートリアル', icon: VscDebugBreakpointLogUnverified ,link:"category/tutorial/page/1" }
+    { name: 'チュートリアル', icon: VscDebugBreakpointLogUnverified ,link:"category/tutorial/page/1" },
+    { name: '日記', icon: MdToday ,link:"category/diary/page/1" }
   ];
-
+//レイアウトのボディ
 export default function SimpleSidebar({ children}: { children: ReactNode}) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <Box minH="100vh" 
     display={"flex"}
-    w={{base:"100%",sm:"1260px"}}
-    mx={{base:0,sm:"auto"}}
-    flexDirection={{base:"column",sm:"row"}}
+    w={{base:"100%",md:"1260px"}}
+    mx={{base:0,md:"auto"}}
+    flexDirection={{base:"column",md:"row"}}
     >
         <MobileNav display={{ base: 'flex', md: 'none' }} bgColor="teal.400" onOpen={onOpen} />
-        <Box minH="100vh" p={{sm:4,base:1}} w={{sm:"77%",base:"100%"}}>
+        <Box minH="100vh" p={{md:4,base:1}} w={{md:"77%",base:"100%"}}>
           {children}
         </Box>
         <SidebarContent
@@ -84,13 +79,14 @@ export default function SimpleSidebar({ children}: { children: ReactNode}) {
         <Drawer
           autoFocus={false}
           isOpen={isOpen}
-          placement="left"
+          placement="right"
           onClose={onClose}
           returnFocusOnClose={false}
           onOverlayClick={onClose}
           size="sm">
           <DrawerOverlay/>
-          <DrawerContent>
+          <DrawerContent 
+          h="70vh">
             <SidebarContent onClose={onClose} />
           </DrawerContent>
         </Drawer>
@@ -103,21 +99,20 @@ export default function SimpleSidebar({ children}: { children: ReactNode}) {
 interface SidebarProps extends BoxProps {
   onClose: () => void;
 }
-
+//PCモバイル共通のメニューバーコンポーネント
 const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
   return (
     <Box
       bg={useColorModeValue('white', 'teal.900')}
       borderLeft="1px"
       borderLeftColor={useColorModeValue('gray.200', 'gray.700')}
-      borderRadius="0px"
       top={1}
-      w={{ base: "100%", sm: "250px" }}
+      w={{ base: "100%", md: "250px" }}
       my={{ base: 0, md: 3}}
       ml={{ base: 0, md: 3}}
       pos={{ base: 'initial', md: "sticky"}}
-      h={{ base: "100vh", md: "100%"}}
-      minH={{ base: "100vh", md: "100%"}}
+      h={{ base: "70vh", md: "100%"}}
+      minH={{ base: "70vh", md: "100%"}}
       minW="0"
       {...rest}>
       <Flex h="10" display={{ base: 'flex', md: 'none' }} alignItems="center" mx="2" w={"100%"} justifyContent="space-between">
@@ -125,9 +120,9 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
       </Flex>
       <Box 
       className='navLinks' 
-      shadow="md"
+      shadow={{md:"md",base:"none"}}
       mb={2} mt={2} mx={2} p={"3px"} 
-      border={"1px"} borderColor={"gray.100"} borderRadius="5px"
+      border={{md:"1px solid gray.100",base:"0"}} borderRadius="5px"
       py="0.5rem">
         <Flex alignItems="center" mx="3" my="2" justifyContent="space-between">
           <InputGroup size='md'>
@@ -173,6 +168,7 @@ interface NavItemProps extends FlexProps {
   link : string;
   children: ReactText;
 }
+//メニューのアイテム
 const NavItem = ({ icon,link, children, ...rest }: NavItemProps) => {
   return (
     <NextLink href={link}>
@@ -209,6 +205,7 @@ const NavItem = ({ icon,link, children, ...rest }: NavItemProps) => {
 interface MobileProps extends FlexProps {
   onOpen: () => void;
 }
+//モバイル用のナビゲーション(ヘッダー)
 const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
   return (
     <Flex
@@ -219,14 +216,8 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
       bg={useColorModeValue('white', 'teal.900')}
       borderBottomWidth="1px"
       borderBottomColor={useColorModeValue('teal.200', 'teal.700')}
-      justifyContent="flex-start"
+      justifyContent="space-between"
       {...rest}>
-      <IconButton
-        variant="outline"
-        onClick={onOpen}
-        aria-label="open menu"
-        icon={<FiMenu color='white' />}
-      />
     <Box pl="2" pt="2">
         <Image src="/images/YakanBlogLogo.png"
             width={180}
@@ -234,6 +225,12 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
             alt="ロゴ"
             />
     </Box>
+      <IconButton
+        variant="outline"
+        onClick={onOpen}
+        aria-label="open menu"
+        icon={<FiMenu color='white' />}
+      />
     </Flex>
   );
 };

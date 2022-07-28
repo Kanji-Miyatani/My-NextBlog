@@ -5,6 +5,7 @@ import { GetStaticProps, GetStaticPaths } from 'next'
 import { ParsedUrlQuery } from 'node:querystring';
 import BlogDetail from '../../../components/blogDetail';
 import Seo from '../../../components/Seo';
+import { CreateBreadCrumbdata } from '../../../lib/dataConvert';
 //取得データ
 interface Props {
   item: IArticle
@@ -41,7 +42,7 @@ export const getStaticProps: GetStaticProps<Props, Params> = async ({
 
 export default function Post({item}:Props) {
   return (
-        <Layout> 
+        <Layout breadCrumbData={CreateBreadCrumbdata(item.title,`blog/${item.id}`,item.category?.name,`category/${item.category?.id}/page/1`,)}> 
             <Seo title={item.title} isHome={false} imageUrl={item.eyecatch.url} description={`${item.title}|${item.description}`} path={`blog/${item.id}`}/>
           <BlogDetail article={item}></BlogDetail>
         </Layout>

@@ -2,27 +2,32 @@ import React from 'react'
 import NextLink from 'next/link'
 import{Box,Breadcrumb,BreadcrumbItem,BreadcrumbLink,Flex}from '@chakra-ui/react'
 import {AiOutlineRight,AiFillHome, } from 'react-icons/ai'
+import { IBreadCrumbData } from '../interface/domestic'
 
-
-
-function BreadCrumb() {
+function BreadCrumb({nowPage="",nowPagePath="",parentPage="",parentPagePath=""}:IBreadCrumbData) {
   return (
     <Breadcrumb mx="auto" spacing='8px' separator={<AiOutlineRight color='' />} textAlign="center">
         <BreadcrumbItem>
-            <BreadcrumbLink href='#'>
-                <Flex alignItems="">
-                    <AiFillHome/>
-                    <Box ml="1">Home</Box>
-                </Flex>
+            <BreadcrumbLink href='/'>
+                    <Box ml="1">ホーム</Box>
             </BreadcrumbLink>
         </BreadcrumbItem>
-        <BreadcrumbItem>
-            <BreadcrumbLink href='#'>About</BreadcrumbLink>
-        </BreadcrumbItem>
-
-        <BreadcrumbItem isCurrentPage>
-            <BreadcrumbLink href='#'>Contact</BreadcrumbLink>
-        </BreadcrumbItem>
+        {
+            parentPage==""?<></>:
+            <BreadcrumbItem>
+                <NextLink href={parentPagePath}>
+                    <BreadcrumbLink>{parentPage}</BreadcrumbLink>
+                </NextLink>
+            </BreadcrumbItem>
+        }
+        {
+            nowPage==""?<></>:
+            <BreadcrumbItem isCurrentPage>
+                <NextLink href={nowPagePath}>
+                    <BreadcrumbLink>{nowPage}</BreadcrumbLink>
+                </NextLink>
+            </BreadcrumbItem>
+        }
     </Breadcrumb>
   )
 }

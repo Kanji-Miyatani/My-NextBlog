@@ -38,7 +38,8 @@ const BlogList =({datas,page}:Prop)=>{
                 <Box w={"100%"}>
                     {/* その他記事 */}
                     <Grid className="container-" templateColumns='repeat(1, 1fr)' gap={6} mt="5" h="100%">
-                    {
+                    {articles.length==0?
+                    <Box m="1rem">記事がありません。</Box>:
                     articles.map((article,index)=>(
                         <GridItem w='100%' key={index}>
                             <ArticleChild

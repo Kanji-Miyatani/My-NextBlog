@@ -2,6 +2,7 @@
 import * as cheerio from 'cheerio';
 import { getDomainLocale } from 'next/dist/shared/lib/router/router';
 import { IArticle, ITocs } from '../interface/article';
+import { IBreadCrumbData } from '../interface/domestic';
 
 export function getTocs(article:IArticle):ITocs[]{
     const $ =  cheerio.load(article.content || "");
@@ -17,4 +18,13 @@ export function getTocs(article:IArticle):ITocs[]{
 
 export const getDomain=():string=>{
   return "https://my-next-blog-orpin.vercel.app"
+}
+
+export const CreateBreadCrumbdata=(nowPage:string="",nowPagePath:string="",parentPage:string="",parentPagePath:string="") : IBreadCrumbData=>{
+  return{
+    nowPage:nowPage,
+    nowPagePath:nowPagePath,
+    parentPage:parentPage,
+    parentPagePath:parentPagePath
+  }
 }

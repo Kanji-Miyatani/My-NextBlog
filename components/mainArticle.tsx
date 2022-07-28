@@ -23,13 +23,13 @@ const MainArticle =({title,description,imageSrc,blogTag}:IBlogChild)=>{
        borderRadius={"15px"} bgColor={"white"}
         maxW={'7xl'} minH={"30vh"} p="0" m="0"
         display="flex"
-        flexDirection={{ base: 'column', sm: 'row' }}
+        flexDirection={{ base: 'column', md: 'row' }}
         justifyContent="space-between">
           <Box
              className="Pickup-Image"
-             width={{ base: '100%', sm: '60%' }}
-             minH={{ base: '80%', sm: 'auto' }}
-             height={{ base: '120px', sm: 'auto' }}
+             width={{ base: '100%', md: '60%' }}
+             minH={{ base: '80%', md: 'auto' }}
+             height={{ base: '120px', md: 'auto' }}
              >
               <Image
                 height={'100%'}

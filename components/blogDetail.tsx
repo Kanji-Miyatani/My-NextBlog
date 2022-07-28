@@ -16,7 +16,7 @@ const BlogDetail=({article}:Props)=>{
     const html = article.content;
     const tocs = getTocs(article);
     return(
-        <Box bgColor={"white"} minW={"100%"} shadow="sm" px="3rem" py="2rem">
+        <Box bgColor={"white"} minW={"100%"} shadow="sm" px={{sm:"2rem",base:"2px"}} py="2rem">
             <Box pb={"20px"} >
               <Heading as="h1" my={3}>{title}</Heading>
               <Text>作成日：{ToDateString(date)}</Text>

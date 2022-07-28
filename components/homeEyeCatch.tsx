@@ -29,7 +29,7 @@ const MotionBox: React.FC<MotionBoxProps> = motion(chakra.div);
   return (
     <Container p="20px" minH="260px" minW="100%" display="flex" flexDirection="column" alignItems="center" justifyContent="center"  bgColor="teal.800">
         <Heading as="h1" color="white" fontFamily="serif">Yakan君の今日の一言</Heading>
-        <Flex h="100%" w="100%" flexDir={{sm:"row",base:"row"}} alignItems="end" justifyContent="center">
+        <Flex h="100%" w="100%" flexDir={{md:"row",base:"row"}} alignItems="end" justifyContent="center">
             <MotionBox
                 onClick={OnClickEvent}
                 animate={control}
@@ -49,7 +49,7 @@ const MotionBox: React.FC<MotionBoxProps> = motion(chakra.div);
              <Collapse in={isClicked}>
                 <Box m="1">
                     <Box 
-                    m="30px" noOfLines={{sm:4,base:6}} fontFamily="serif" fontSize="1.4rem" fontWeight="medium" bgColor="white" boxShadow="0 0 14px 15px #ffffff" textAlign="center" borderRadius="50%" p="1rem" w={{sm:"300px",base:"150px"}}>
+                    m="30px" noOfLines={{md:4,base:6}} fontFamily="serif" fontSize="1.4rem" fontWeight="medium" bgColor="white" boxShadow="0 0 14px 15px #ffffff" textAlign="center" borderRadius="50%" p="1rem" w={{md:"300px",base:"150px"}}>
                         ナスはグロい！
                     </Box>
                 </Box>
