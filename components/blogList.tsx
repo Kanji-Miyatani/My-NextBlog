@@ -8,11 +8,12 @@ import { createTheme } from '@mui/material/styles';
 import ArticleChild from "./articleChild";
 import React from "react";
 import { useRouter } from "next/router";
+import ArticleChildBox from "./articleChildBox";
 
-const MAX_PAGE =2 as const;
 type Prop={
     datas:IMicroCMSBlogRes,
-    page:number
+    page:number,
+    maxCountInPage:number
 }
 export const theme = createTheme({
   palette: {
@@ -21,14 +22,16 @@ export const theme = createTheme({
     },
   },
 });
-const BlogList =({datas,page}:Prop)=>{
-    var totalPagesCount = Math.ceil(datas.totalCount/MAX_PAGE);
+const BlogList =({datas,page,maxCountInPage}:Prop)=>{
+    var totalPagesCount = Math.ceil(datas.totalCount/maxCountInPage);
     const router = useRouter();
     const handlePageChange = (event: React.ChangeEvent<unknown>, page: number) => {
         let {pathname} = router;
-        pathname = `${pathname.match(/[0-9]*$/)??[0]}${page}`;
+        delete router.query.page;
+        pathname = pathname.replace(/\[page\]/,`${page}`);
         router.push({
-            pathname
+            pathname:pathname,
+            query:router.query
         })
     }
     const articles = datas.contents;
@@ -37,18 +40,20 @@ const BlogList =({datas,page}:Prop)=>{
             <div className={styles.container}>
                 <Box w={"100%"}>
                     {/* その他記事 */}
-                    <Grid className="container-" templateColumns='repeat(1, 1fr)' gap={6} mt="5" h="100%">
+                    <Grid className="container-" templateColumns={{lg:'repeat(3, 1fr)',md:'repeat(1, 1fr)',sm:'repeat(2, 1fr)',base:'repeat(1, 1fr)'}} gap={6} mt="5" h="100%">
                     {articles.length==0?
                     <Box m="1rem">記事がありません。</Box>:
                     articles.map((article,index)=>(
                         <GridItem w='100%' key={index}>
-                            <ArticleChild
+                            <ArticleChildBox
                             id ={article.id}
                             title={article.title} 
                             description={article.description}
                             blogTag={article.Tags} 
                             imageSrc = {article.eyecatch.url}
-                            date={new Date(article.updatedAt)}
+                            date={new Date(article.publishedAt)}
+                            categoryID ={article.category?.id}
+                            categoryName={article.category?.name}
                             />
                         </GridItem>
                     ))

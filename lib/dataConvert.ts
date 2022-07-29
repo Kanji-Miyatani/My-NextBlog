@@ -17,7 +17,7 @@ export function getTocs(article:IArticle):ITocs[]{
 }
 
 export const getDomain=():string=>{
-  return "https://my-next-blog-orpin.vercel.app"
+  return "https://yakanblog.com"
 }
 
 export const CreateBreadCrumbdata=(nowPage:string="",nowPagePath:string="",parentPage:string="",parentPagePath:string="") : IBreadCrumbData=>{

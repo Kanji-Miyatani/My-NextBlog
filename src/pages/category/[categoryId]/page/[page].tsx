@@ -9,7 +9,7 @@ import BlogList from '../../../../../components/blogList';
 import Seo from "../../../../../components/Seo";
 import { CreateBreadCrumbdata } from '../../../../../lib/dataConvert';
 
-const MAX_PAGE =2 as const;
+const MAX_PAGE =15 as const;
 type Prop={
   data:IMicroCMSBlogRes,
   page:number,
@@ -32,7 +32,7 @@ const CategoryPage:NextPage<Prop> =({categoryName,data,page,categoryId})=>{
         <Box textAlign="center">
           <Heading padding={3}>カテゴリ：{categoryName}</Heading>
         </Box>
-         <BlogList datas={data} page={page} />
+         <BlogList datas={data} page={page} maxCountInPage={MAX_PAGE} />
        </Layout>
       </>
   )
@@ -62,7 +62,7 @@ export const getStaticPaths:GetStaticPaths =async () =>{
 
 export const getStaticProps:GetStaticProps=async({params})=>{
    const categoryId = String(params?.categoryId);
-   const categoryPage = Number(params?.id);
+   const categoryPage = Number(params?.page);
    const data = await getPostsInCategories(MAX_PAGE,categoryPage-1,categoryId);
    const categoryName = await GetCategoryName(categoryId);
    return {

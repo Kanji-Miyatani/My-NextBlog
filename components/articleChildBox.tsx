@@ -28,26 +28,26 @@ function ArticleChildBox({id,title,description,imageSrc,blogTag,date,categoryNam
   description = description?.length>MAX_DESCRIPTION_LENGTH ? description.substring(0,MAX_DESCRIPTION_LENGTH)+"...":description;
  
     return (
-        <Box className="article-child-box" w={{md:280,base:"100%"}} h={{md:280,base:"72vw"}} bg="white" boxShadow="md" _hover={{boxShadow:"xl",opacity:"0.8"}} rounded="md" p="6" overflow="hidden">
+        <Box className="article-child-box" w={{sm:280,base:"100%"}} h={{sm:280,base:"72vw"}} bg="white" boxShadow="md" _hover={{boxShadow:"xl",opacity:"0.8"}} rounded="md" p="6" overflow="hidden">
           <NextLink href={`/blog/${id}`} >
             <a>
-                <Box position="relative" maxH={{md:175,base:"45vw"}} h={{md:175,base:"45vw"}} mt="-6" mx="-6" pos="relative" overflow='hidden'>
-                 
+                <Box position="relative" maxH={{sm:175,base:"45vw"}} h={{sm:175,base:"45vw"}} mt="-6" mx="-6" pos="relative" overflow='hidden'>
                    <Flex
                       color="blue.500"
                       fontWeight="800"
                       fontSize="xs"
                       letterSpacing="wide"
                       position="relative" zIndex={10}
-                      top="0.2rem"
-                    >
-                       {
+                      left="0"
+                      top="0"
+                      >
+                        {
                           aMonthAgo<date?(
-                            <Badge position="relative" zIndex={10} bgColor="teal.100" left={2}>new</Badge>
+                            <Badge h="1.8rem" w="3.3rem" lineHeight="1.8rem" textAlign="center" borderRadius="0px" zIndex={10} colorScheme='green' fontSize="0.9rem">new</Badge>
                           ):<></>
                         }
                         {blogTag.map((tag,i) => (
-                          <Badge ml={1} key={i}><Box>{tag.tag}</Box></Badge>
+                          <Badge ml={1} key={i} h="1.1rem" mt="2px"><Box>{tag.tag}</Box></Badge>
                       ))}
                     </Flex>
                   <NextImage

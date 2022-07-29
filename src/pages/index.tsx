@@ -8,17 +8,23 @@ import { client } from '../../lib/client';
 import {IArticle} from '../../interface/article';
 import NextImage from 'next/image';
 import NextLink from 'next/link';
-import {Box,Heading,Text,Grid,GridItem, Button, Flex, List, ListItem,} from '@chakra-ui/react'
+import {Box,Heading,Text,Grid,GridItem, Button, Flex, List, ListItem, Tabs, TabList, Tab, TabPanels, TabPanel,} from '@chakra-ui/react'
 import {GrNext} from 'react-icons/gr'
 import Seo from '../../components/Seo';
 import HomeEyeCatch from '../../components/homeEyeCatch';
 import { CreateBreadCrumbdata } from '../../lib/dataConvert';
 import ArticleChild from '../../components/articleChild';
+import { GetCategoryName } from '../../lib/posts';
 
 type Props ={
   articles : Array<IArticle>
 }
-
+//カテゴリごとの記事一覧
+interface IArticlesByCategory{
+  categoryName:string
+  categoryId : string
+  articles:IArticle[]
+}
 export async function getStaticProps(){
     const data = await client.get({endpoint:"blogs"});
     return{
@@ -29,8 +35,23 @@ export async function getStaticProps(){
 }
 
 const Home: NextPage<Props> = ({articles}:Props) => {
-  //最新記事のみメイン記事として表示
-  var displayArticles = articles.slice(0,5);
+  //最新記事の取得
+  const displayArticles = articles.slice(0,5);
+  const categoryArticles = articles.reduce((result:IArticlesByCategory[],article)=>{
+    const categoryName = article.category?.name;
+    const categoryId = article.category?.id;
+      if(result.find(x=>x.categoryId==categoryId)){
+          result.find(x=>x.categoryId==categoryId)?.articles.push(article);
+      }
+      else{
+        result.push({
+          categoryId : categoryId,
+          categoryName:categoryName,
+          articles:[article]
+        })
+      }
+      return result;
+  },[])
   return (
     <Layout breadCrumbData={CreateBreadCrumbdata()}>
       <Seo title='ホーム' isHome={true} imageUrl={""} description="やかんのブログ｜トップページ" path="" />
@@ -71,60 +92,56 @@ const Home: NextPage<Props> = ({articles}:Props) => {
             </NextLink>
           </Box>
         </Box>
-        <Box w={"100%"} mt={5}>
+        <Box w={"100%"} mt="3rem">
           <Heading as="h4" fontSize={20} borderBottom="2px double gray" mx="auto" mb="3" textAlign="center">
             カテゴリ別おすすめ記事
           </Heading>
-            <Flex flexDirection={{md:"row",base:"column"}}>
-              <Box mr="2">
-                <Heading my="0.5rem" pb="5px" fontSize="2rem" w="5rem">日記</Heading>
-                <List>
-                  {
-                    displayArticles.map((article,index)=>(
-                    <ListItem w='100%' key={index}>
-                        <ArticleChild
-                        id ={article.id}
-                        title={article.title} 
-                        description={article.description}
-                        blogTag={article.Tags} 
-                        imageSrc = {article.eyecatch.url}
-                        date={new Date(article.publishedAt)}
-                        />
-                        </ListItem>
-                    ))
-                  }
-                </List>
-              </Box>
-              <Box mr="2">
-                <Heading my="0.5rem" fontSize="2rem" >Web開発</Heading>
-                <List>
-                  {
-                    displayArticles.map((article,index)=>(
-                    <ListItem pb="5px" w='100%' key={index}>
-                        <ArticleChild
-                        id ={article.id}
-                        title={article.title} 
-                        description={article.description}
-                        blogTag={article.Tags} 
-                        imageSrc = {article.eyecatch.url}
-                        date={new Date(article.publishedAt)}
-                        />
-                        </ListItem>
-                    ))
-                  }
-                </List>
-              </Box>
-            </Flex>
-          <Box textAlign="center" mt="1rem">
-            <NextLink href="/page/1">
-              <a>
-              <Button>もっと見る
-                <Box m={1}><GrNext color="gray" /></Box>
-              </Button>
-              </a>
-            </NextLink>
-          </Box>
+          <Tabs variant='solid-rounded' colorScheme='green'>
+            <TabList>
+              {
+                categoryArticles.map((categoryArticle)=>(
+                  <Tab>{categoryArticle.categoryName}</Tab>
+                ))
+              }
+            </TabList>
+            <TabPanels>
+              {
+                categoryArticles.map((categoryArticle)=>(
+                  <TabPanel>
+                    <Grid className="container-" templateColumns={{md:'repeat(3, 1fr)',sm:'repeat(2, 1fr)',base:'repeat(1, 1fr)'}} gap={6} mt="1" h="100%">
+                      {
+                        categoryArticle.articles.slice(0,6).map((article,index)=>(
+                          <GridItem w='100%' key={index}>
+                            <ArticleChildBox
+                            id ={article.id}
+                            title={article.title} 
+                            description={article.description}
+                            blogTag={article.Tags} 
+                            imageSrc = {article.eyecatch.url}
+                            date={new Date(article.publishedAt)}
+                            categoryID = {article.category?.id}
+                            categoryName = {article.category?.name}
+                            />
+                          </GridItem>
+                          ))
+                      }
+                    </Grid>
+                    <Box textAlign="center" mt="1rem">
+                      <NextLink href={`category/${categoryArticle.categoryId}/page/1`}>
+                        <a>
+                        <Button>{`${categoryArticle.categoryName}の記事一覧へ`}
+                          <Box m={1}><GrNext color="gray" /></Box>
+                        </Button>
+                        </a>
+                      </NextLink>
+                    </Box>
+                  </TabPanel>
+                ))
+              }
+            </TabPanels>
+          </Tabs>
         </Box>
+            
       </div>
     </Layout>
   )

@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { ChangeEvent, ReactNode, useState } from 'react';
 import {
   IconButton,
   Box,
@@ -37,6 +37,7 @@ import { IconType } from 'react-icons';
 import { ReactText } from 'react';
 import Image from 'next/image'
 import MyProfile from './myProfile';
+import {useRouter} from 'next/router' 
 
 
 interface LinkItemProps {
@@ -52,11 +53,11 @@ const LinkItems: Array<LinkItemProps> = [
 ];
 //カテゴリ一覧
 const CategoryItems: Array<LinkItemProps> = [
-    { name: 'Web開発', icon: VscDebugBreakpointLogUnverified ,link:"category/web/page/1" },
-    { name: 'デザイン・設計', icon: VscDebugBreakpointLogUnverified ,link:"category/design/page/1" },
-    { name: '効率化', icon: VscDebugBreakpointLogUnverified ,link:"category/optimization/page/1" },
-    { name: 'チュートリアル', icon: VscDebugBreakpointLogUnverified ,link:"category/tutorial/page/1" },
-    { name: '日記', icon: MdToday ,link:"category/diary/page/1" }
+    { name: 'Web開発', icon: VscDebugBreakpointLogUnverified ,link:"/category/web/page/1" },
+    { name: 'デザイン・設計', icon: VscDebugBreakpointLogUnverified ,link:"/category/design/page/1" },
+    { name: '効率化', icon: VscDebugBreakpointLogUnverified ,link:"/category/optimization/page/1" },
+    { name: 'チュートリアル', icon: VscDebugBreakpointLogUnverified ,link:"/category/tutorial/page/1" },
+    { name: '日記', icon: MdToday ,link:"/category/diary/page/1" }
   ];
 //レイアウトのボディ
 export default function SimpleSidebar({ children}: { children: ReactNode}) {
@@ -64,7 +65,7 @@ export default function SimpleSidebar({ children}: { children: ReactNode}) {
   return (
     <Box minH="100vh" 
     display={"flex"}
-    w={{base:"100%",md:"1260px"}}
+    maxW={{base:"100%",md:"720px",lg:"1260px"}}
     mx={{base:0,md:"auto"}}
     flexDirection={{base:"column",md:"row"}}
     >
@@ -101,6 +102,15 @@ interface SidebarProps extends BoxProps {
 }
 //PCモバイル共通のメニューバーコンポーネント
 const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
+  const [sWord,setSWord]=useState("");
+  const router = useRouter();
+  const onSerachSubmit=(e:React.MouseEvent<HTMLElement, MouseEvent>)=>{
+      e.preventDefault();
+      router.push({
+        pathname: '/search/1',
+        query: { search: sWord},
+      })
+  }
   return (
     <Box
       bg={useColorModeValue('white', 'teal.900')}
@@ -126,12 +136,12 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
       py="0.5rem">
         <Flex alignItems="center" mx="3" my="2" justifyContent="space-between">
           <InputGroup size='md'>
-            <Input
+            <Input onChange={(e)=>{setSWord(e.target.value)}}
               pr='5rem'
               placeholder='Search'
             />
             <InputRightElement width='3rem'>
-              <Button h='1.95rem' size='sm'>
+              <Button type="button" h='1.95rem' size='sm' onClick={onSerachSubmit}>
                   <Icon
                       fontSize="16"
                       _groupHover={{

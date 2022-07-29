@@ -93,3 +93,17 @@ export async function getAllPostIds():Promise<Array<IPaths>>{
     return data.contents;
 }
 
+//全てのブログ検索取得
+export async function getSearchedPosts(sWord:string,offset:number,count:number):Promise<IMicroCMSBlogRes>{
+  const data = await client
+  .get({
+    endpoint: 'blogs',
+    queries: {
+      limit: count, offset: offset,
+      filters:`title[contains]${sWord}[or]description[contains]${sWord}`,
+  },
+  });
+
+  return data;
+}
+

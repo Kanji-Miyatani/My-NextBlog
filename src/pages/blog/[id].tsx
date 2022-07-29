@@ -15,6 +15,17 @@ interface Props {
 interface Params extends ParsedUrlQuery {
   id: string
 }
+
+export default function Post({item}:Props) {
+  return (
+        <Layout breadCrumbData={CreateBreadCrumbdata(item.title,`blog/${item.id}`,item.category?.name,`category/${item.category?.id}/page/1`,)}> 
+            <Seo title={item.title} isHome={false} imageUrl={item.eyecatch.url} description={`${item.title}|${item.description}`} path={`blog/${item.id}`}/>
+          <BlogDetail article={item}></BlogDetail>
+        </Layout>
+        )
+}
+
+
 //静的生成項目ID一覧を取得
 export const getStaticPaths: GetStaticPaths<Params> = async () => {
   const items = await getAllPostIds();
@@ -38,13 +49,4 @@ export const getStaticProps: GetStaticProps<Props, Params> = async ({
       item,
     },
   }
-}
-
-export default function Post({item}:Props) {
-  return (
-        <Layout breadCrumbData={CreateBreadCrumbdata(item.title,`blog/${item.id}`,item.category?.name,`category/${item.category?.id}/page/1`,)}> 
-            <Seo title={item.title} isHome={false} imageUrl={item.eyecatch.url} description={`${item.title}|${item.description}`} path={`blog/${item.id}`}/>
-          <BlogDetail article={item}></BlogDetail>
-        </Layout>
-        )
 }

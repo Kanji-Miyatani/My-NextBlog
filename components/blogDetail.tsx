@@ -5,6 +5,7 @@ import 'highlight.js/styles/vs2015.css';
 import { getTocs } from "../lib/dataConvert";
 import ContentsTable from "./contentsTable";
 import {ToDateString} from "../lib/dateService";
+import NextImage from "next/image"
 type Props={
     article:IArticle
 }
@@ -20,6 +21,9 @@ const BlogDetail=({article}:Props)=>{
             <Box pb={"20px"} >
               <Heading as="h1" my={3}>{title}</Heading>
               <Text>作成日：{ToDateString(date)}</Text>
+              <Box pb={"20px"} px={{md:"1rem",base:"0"}} mx="1rem">
+                <NextImage src={article.eyecatch.url} height={article.eyecatch.height} width={article.eyecatch.width} objectFit="cover" ></NextImage>
+              </Box>
             </Box>
             <Box pb={"20px"} >
                 <ContentsTable tocs={tocs}/>

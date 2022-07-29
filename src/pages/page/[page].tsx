@@ -11,7 +11,7 @@ import Seo from "../../../components/Seo";
 import {Box,Heading,Text,Grid,GridItem,Container} from '@chakra-ui/react'
 import BlogList from "../../../components/blogList";
 import { CreateBreadCrumbdata } from "../../../lib/dataConvert";
-const MAX_PAGE =2 as const;
+const MAX_PAGE =15 as const;
 type Prop={
     datas:IMicroCMSBlogRes,
     page:number
@@ -26,13 +26,12 @@ export const theme = createTheme({
   },
 });
 const DynamicPage:NextPage<Prop> =({datas,page})=>{
-    var totalPagesCount = Math.ceil(datas.totalCount/MAX_PAGE);
     const articles = datas.contents;
     return(
         <>
          <Layout breadCrumbData={CreateBreadCrumbdata("ブログ一覧",`page/${page}`,)}>
             <Seo title='ブログ一覧' isHome={true} imageUrl={""} description="やかんブログの記事一覧です。" path="page/1" />
-            <BlogList  datas={datas} page={page}  />
+            <BlogList  datas={datas} page={page} maxCountInPage={MAX_PAGE} />
          </Layout>
         </>
     )
@@ -43,7 +42,7 @@ export const getStaticPaths:GetStaticPaths =async () => {
     const paths = [...Array(Math.ceil(blogsCount/MAX_PAGE))].map((_,i)=>{
         return {
             params:{
-                offset:`${i+1}`
+                page:`${i+1}`
             }
         }
     })
@@ -51,9 +50,8 @@ export const getStaticPaths:GetStaticPaths =async () => {
 }
 
 export const getStaticProps:GetStaticProps = async({params})=>{
-    const offset = params?.offset ? String(params?.offset) : '0';
-    const datas =await getPostsInPages(MAX_PAGE,Math.ceil(Number.parseInt(offset, 10) - 1)*MAX_PAGE);
-    const page = offset;
+    const page = params?.page ? String(params?.page) : '0';
+    const datas =await getPostsInPages(MAX_PAGE,Math.ceil(Number.parseInt(page, 10) - 1)*MAX_PAGE);
     return {
         props:{
             datas,
