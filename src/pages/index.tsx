@@ -107,7 +107,7 @@ const Home: NextPage<Props> = ({articles}:Props) => {
             <TabPanels>
               {
                 categoryArticles.map((categoryArticle)=>(
-                  <TabPanel>
+                  <TabPanel key={categoryArticle.categoryId}>
                     <Grid className="container-" templateColumns={{md:'repeat(3, 1fr)',sm:'repeat(2, 1fr)',base:'repeat(1, 1fr)'}} gap={6} mt="1" h="100%">
                       {
                         categoryArticle.articles.slice(0,6).map((article,index)=>(
