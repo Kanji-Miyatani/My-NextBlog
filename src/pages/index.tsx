@@ -100,7 +100,7 @@ const Home: NextPage<Props> = ({articles}:Props) => {
             <TabList>
               {
                 categoryArticles.map((categoryArticle)=>(
-                  <Tab>{categoryArticle.categoryName}</Tab>
+                  <Tab key={categoryArticle.categoryId}>{categoryArticle.categoryName}</Tab>
                 ))
               }
             </TabList>
