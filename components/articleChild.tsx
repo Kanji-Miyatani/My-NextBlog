@@ -29,7 +29,7 @@ function ArticleChild({id,title,description,imageSrc,blogTag,date}:IBlogChild) {
 
 
     return (
-      <Box className="article-child" borderWidth='1px' borderRadius='lg' h={{base:150,md:120}} overflow="hidden"  bgColor={'white'} shadow="sm" _hover={{shadow:"lg",cursor:"pointer"}}>
+      <Box className="article-child" borderWidth='1px' borderRadius='sm' h={{base:"20vw",md:150}} overflow="hidden"  bgColor={'white'} shadow="sm" _hover={{cursor:"pointer",opacity:"0.8"}}>
           <NextLink href={`/blog/${id}`} >
             <a>
             {/* アイキャッチ */}
@@ -37,10 +37,10 @@ function ArticleChild({id,title,description,imageSrc,blogTag,date}:IBlogChild) {
             display="flex"
             minW="100%"
             maxW="100%">
-              <Box minW={{base:"40%",md:"30%"}} h={{base:"150",md:150}} overflow='hidden'>
+              <Box minW={{base:"32vw",md:"150"}} float="left" h={{base:"20vw",md:150}} overflow='hidden'>
                 <Box w={"100%"} h={"100%"} position="relative">
                   <NextImage
-                    layout='fill'
+                    layout="fill"
                     objectFit="cover"
                     src={imageSrc} alt={"画像"} />
                 </Box>
