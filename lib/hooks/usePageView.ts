@@ -7,9 +7,13 @@ const usePageView=()=>{
 
     useEffect(()=>{
         if(!ExistsGAID())return;
-        router.events.on('routeChangeComplete',(path)=>{
-            pageview(path);
-        })
+        const handleRouteChange = (url: string) => {
+            pageview(url);
+          };
+        router.events.on('routeChangeComplete', handleRouteChange);
+        return () => {
+            router.events.off('routeChangeComplete', handleRouteChange);
+          };
     },[router.events])
 }
 
