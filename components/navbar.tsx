@@ -65,7 +65,7 @@ export default function SimpleSidebar({ children}: { children: ReactNode}) {
   return (
     <Box minH="100vh" 
     display={"flex"}
-    maxW={{base:"100%",md:"720px",lg:"1260px"}}
+    maxW={{base:"100%",md:"720px",lg:"1160px"}}
     mx={{base:0,md:"auto"}}
     flexDirection={{base:"column",md:"row"}}
     >
@@ -84,10 +84,10 @@ export default function SimpleSidebar({ children}: { children: ReactNode}) {
           onClose={onClose}
           returnFocusOnClose={false}
           onOverlayClick={onClose}
-          size="sm">
+          size="md">
           <DrawerOverlay/>
           <DrawerContent 
-          h="70vh">
+          h="100vh">
             <SidebarContent onClose={onClose} />
           </DrawerContent>
         </Drawer>
@@ -110,6 +110,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
         pathname: '/search/1',
         query: { search: sWord},
       })
+      onClose();
   }
   return (
     <Box
@@ -134,7 +135,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
       mb={2} mt={2} mx={2} p={"3px"} 
       border={{md:"1px solid gray.100",base:"0"}} borderRadius="5px"
       py="0.5rem">
-        <Flex alignItems="center" mx="3" my="2" justifyContent="space-between">
+        <Flex alignItems="center" mx="0" my="2" justifyContent="space-between">
           <InputGroup size='md'>
             <Input onChange={(e)=>{setSWord(e.target.value)}}
               pr='5rem'
@@ -229,11 +230,15 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
       justifyContent="space-between"
       {...rest}>
     <Box pl="2" pt="2">
+      <NextLink href="/">
+        <a>
         <Image src="/images/YakanBlogLogo.png"
             width={180}
             height={40}
             alt="ロゴ"
             />
+        </a>
+      </NextLink>
     </Box>
       <IconButton
         variant="outline"

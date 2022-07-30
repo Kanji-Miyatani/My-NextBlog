@@ -27,7 +27,7 @@ palette: {
 const CategoryPage:NextPage<Prop> =({categoryName,data,page,categoryId})=>{
   return(
       <>
-       <Layout breadCrumbData={CreateBreadCrumbdata(categoryName,`category/${categoryId}/page/1`,)}>
+       <Layout breadCrumbData={CreateBreadCrumbdata(categoryName,`/category/${categoryId}/page/1`,)}>
         <Seo title={`カテゴリ:${categoryName}`} isHome={true} imageUrl={""} description={`やかんブログの${categoryName}の記事一覧です。`} path={`category/${categoryId}/page/1`} />
         <Box textAlign="center">
           <Heading padding={3}>カテゴリ：{categoryName}</Heading>

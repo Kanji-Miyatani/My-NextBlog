@@ -5,6 +5,9 @@ import {AiOutlineRight,AiFillHome, } from 'react-icons/ai'
 import { IBreadCrumbData } from '../interface/domestic'
 
 function BreadCrumb({nowPage="",nowPagePath="",parentPage="",parentPagePath=""}:IBreadCrumbData) {
+    if(nowPage=="" )
+    return <></>
+    else
   return (
     <Breadcrumb mx="auto" spacing='8px' separator={<AiOutlineRight color='' />} textAlign="center">
         <BreadcrumbItem>

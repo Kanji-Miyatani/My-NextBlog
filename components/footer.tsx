@@ -1,4 +1,4 @@
-import {Box} from "@chakra-ui/react"
+import {Box,Text} from "@chakra-ui/react"
 import { IBreadCrumbData } from "../interface/domestic"
 import BreadCrumb from "./breadCrumb"
 import MyProfile from "./myProfile"
@@ -18,6 +18,7 @@ function footer({breadCrumbData}:Props) {
           nowPagePath={breadCrumbData.nowPagePath}
           parentPage={breadCrumbData.parentPage}
           parentPagePath={breadCrumbData.parentPagePath} />
+         <Text as='sub'>&copy; 2022 - 2023 Yakan.</Text>
         </Box>
     </Box>
   )

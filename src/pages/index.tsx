@@ -56,7 +56,7 @@ const Home: NextPage<Props> = ({articles}:Props) => {
     <Layout breadCrumbData={CreateBreadCrumbdata()}>
       <Seo title='ホーム' isHome={true} imageUrl={""} description="やかんのブログ｜トップページ" path="" />
       <div className={styles.container}>
-       <Box w={"100%"} position="relative" minH="290px">
+       <Box w={"100%"} position="relative" minH="auto">
         <HomeEyeCatch/>
        </Box>
         <Box w={"100%"} mt={5}>
@@ -64,7 +64,7 @@ const Home: NextPage<Props> = ({articles}:Props) => {
             最新記事一覧
           </Heading>
             {/* その他記事 */}
-            <Grid className="container-" templateColumns={{md:'repeat(3, 1fr)',sm:'repeat(2, 1fr)',base:'repeat(1, 1fr)'}} gap={6} mt="1" h="100%">
+            <Grid className="container-" templateColumns={{lg:'repeat(3, 1fr)',md:'repeat(1, 1fr)',sm:'repeat(2, 1fr)',base:'repeat(1, 1fr)'}} gap={6} mt="1" h="100%">
             {
               displayArticles.map((article,index)=>(
               <GridItem w='100%' key={index}>
@@ -108,7 +108,7 @@ const Home: NextPage<Props> = ({articles}:Props) => {
               {
                 categoryArticles.map((categoryArticle)=>(
                   <TabPanel key={categoryArticle.categoryId}>
-                    <Grid className="container-" templateColumns={{md:'repeat(3, 1fr)',sm:'repeat(2, 1fr)',base:'repeat(1, 1fr)'}} gap={6} mt="1" h="100%">
+                    <Grid className="container-" templateColumns={{lg:'repeat(3, 1fr)',md:'repeat(1, 1fr)',sm:'repeat(2, 1fr)',base:'repeat(1, 1fr)'}} gap={6} mt="1" h="100%">
                       {
                         categoryArticle.articles.slice(0,6).map((article,index)=>(
                           <GridItem w='100%' key={index}>

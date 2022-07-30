@@ -16,7 +16,7 @@ type Props={
 const SearchPage:NextPage<Props>=({datas,page,sWord})=> {
     return(
         <>
-         <Layout breadCrumbData={CreateBreadCrumbdata("ブログ一覧",`page/${page}`,)}>
+         <Layout breadCrumbData={CreateBreadCrumbdata("ブログ一覧",`/page/${page}`,)}>
             <Seo title='ブログ一覧:検索' isHome={true} imageUrl={""} description={`やかんブログの検索ワード：${sWord}の検索結果記事一覧です。`} path="page/1" />
             <Box textAlign="center">
               <Heading padding={3}>検索条件：{sWord}</Heading>
