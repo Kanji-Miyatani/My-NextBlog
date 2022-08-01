@@ -19,8 +19,9 @@ interface Params extends ParsedUrlQuery {
 export default function Post({item}:Props) {
   return (
         <Layout breadCrumbData={CreateBreadCrumbdata(item.title,`/blog/${item.id}`,item.category?.name,`/category/${item.category?.id}/page/1`,)}> 
-            <Seo title={item.title} isHome={false} imageUrl={item.eyecatch.url} description={`${item.title}|${item.description}`} path={`blog/${item.id}`}/>
+          <Seo title={item.title} isHome={false} imageUrl={item.eyecatch.url} description={`${item.title}|${item.description}`} path={`blog/${item.id}`}/>
           <BlogDetail article={item}></BlogDetail>
+          
         </Layout>
         )
 }
