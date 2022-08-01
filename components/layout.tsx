@@ -12,7 +12,6 @@ type Props = {
  export default function Layout({children,breadCrumbData}:Props){
     return(
         <Box w={{md:"auto",base:"auto"}} my={0} mx="auto" shadow="lg">
-           
             <Header/>
             <Nav>{children}</Nav>
             <Footer breadCrumbData={breadCrumbData}/>
