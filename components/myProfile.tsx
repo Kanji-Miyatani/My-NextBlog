@@ -13,7 +13,7 @@ const MyProfile=()=>{
           shadow="md" flexDirection="column" alignItems={"center"}>
        <Box display={"flex"} h={"80px"} m={3}>
          <Box>
-           <NextImage src="/images/MyPhoto_2.JPG" className="rounded-full" objectFit="cover" height={80}width={80} />
+           <NextImage src="/images/MyPhoto_2.jpg" className="rounded-full" objectFit="cover" height={80}width={80} />
          </Box>
          <Heading as='h4' size='md' w="50%" padding={"auto"} ml={3} my={"auto"} textAlign={"left"}>
           Yakan

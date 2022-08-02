@@ -1,20 +1,15 @@
 import type { NextPage } from 'next'
-import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import Layout from '../../components/layout';
 import ArticleChildBox from '../../components/articleChildBox';
-import MainChild from '../../components/mainArticle';
 import { client } from '../../lib/client';
 import {IArticle} from '../../interface/article';
-import NextImage from 'next/image';
 import NextLink from 'next/link';
 import {Box,Heading,Text,Grid,GridItem, Button, Flex, List, ListItem, Tabs, TabList, Tab, TabPanels, TabPanel,} from '@chakra-ui/react'
 import {GrNext} from 'react-icons/gr'
 import Seo from '../../components/Seo';
 import HomeEyeCatch from '../../components/homeEyeCatch';
 import { CreateBreadCrumbdata } from '../../lib/dataConvert';
-import ArticleChild from '../../components/articleChild';
-import { GetCategoryName } from '../../lib/posts';
 
 type Props ={
   articles : Array<IArticle>
