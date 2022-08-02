@@ -61,7 +61,7 @@ const MotionBackBox: React.FC<MotionBoxProps> = motion(chakra.div);
                 <Box m="1">
                     <Box 
                     m="30px" noOfLines={{md:4,base:6}} fontFamily="serif" fontSize="1.4rem" fontWeight="medium" bgColor="white" boxShadow="0 0 14px 15px white" textAlign="center" borderRadius="10%" p="1rem" w={{md:"300px",base:"150px"}}>
-                        {"アイデアに価値はない"}
+                        {"切手を舐めた時の摂取カロリーは２kcal"}
                     </Box>
                 </Box>
              </Collapse>
