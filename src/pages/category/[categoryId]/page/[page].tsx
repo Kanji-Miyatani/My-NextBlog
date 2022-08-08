@@ -1,4 +1,4 @@
-import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
+import { GetStaticPaths, GetStaticProps, GetStaticPropsContext, NextPage } from 'next';
 import React from 'react'
 import { GetAllCategories, GetCategoryName, getPostsCountInCategories, getPostsInCategories } from '../../../../../lib/posts';
 import { createTheme } from '@mui/material/styles';
@@ -8,6 +8,7 @@ import { Box,Heading} from '@chakra-ui/react';
 import BlogList from '../../../../../components/blogList';
 import Seo from "../../../../../components/Seo";
 import { CreateBreadCrumbdata } from '../../../../../lib/dataConvert';
+import { ParsedUrlQuery } from 'node:querystring';
 
 const MAX_PAGE =15 as const;
 type Prop={
@@ -41,17 +42,16 @@ export const getStaticPaths:GetStaticPaths =async () =>{
   const categories =await GetAllCategories();
   const pathsNotFlat = await Promise.all(
     categories.map((item:ICategories) => {
-      const result = getPostsCountInCategories(item.id)
+      return  getPostsCountInCategories(item.id)
         .then((totalCount) => {
           const range = (start: number, end: number) =>
             [...Array(end - start + 1)].map((_, i) => start + i)
-          let rangeEnd =  Math.ceil(totalCount / MAX_PAGE);
-          rangeEnd = rangeEnd==0?1:rangeEnd;//記事数0でも表示
-          return range(1, rangeEnd).map(
+          let pagesEnd =  Math.ceil(totalCount / MAX_PAGE);
+          pagesEnd = pagesEnd==0?1:pagesEnd;//記事数0でも表示
+          return range(1, pagesEnd).map(
             (repo) => `/category/${item.id}/page/${repo}`
           )
         })
-      return result
     })
   )
   const paths=pathsNotFlat.flat();
@@ -60,7 +60,7 @@ export const getStaticPaths:GetStaticPaths =async () =>{
   return { paths, fallback: false }
 }
 
-export const getStaticProps:GetStaticProps=async({params})=>{
+export const getStaticProps:GetStaticProps=async({params}:GetStaticPropsContext)=>{
    const categoryId = String(params?.categoryId);
    const categoryPage = Number(params?.page);
    const data = await getPostsInCategories(MAX_PAGE,categoryPage-1,categoryId);
