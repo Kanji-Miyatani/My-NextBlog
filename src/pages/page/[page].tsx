@@ -1,14 +1,9 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { IMicroCMSBlogRes, IMicroCMSRes } from "../../../interface/article";
 import { getAllPosts, getPostsInPages } from "../../../lib/posts";
-import { Pagination } from '@mui/material';
-import Image from 'next/image'
-import styles from '../../styles/Home.module.css'
 import Layout from '../../../components/layout';
-import ArticleChild from '../../../components/articleChild';
 import { createTheme } from '@mui/material/styles';
 import Seo from "../../../components/Seo";
-import {Box,Heading,Text,Grid,GridItem,Container} from '@chakra-ui/react'
 import BlogList from "../../../components/blogList";
 import { CreateBreadCrumbdata } from "../../../lib/dataConvert";
 const MAX_PAGE =10 as const;

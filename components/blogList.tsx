@@ -5,7 +5,6 @@ import Image from 'next/image'
 import styles from '../src/styles/Home.module.css'
 import {Box,Heading,Text,Grid,GridItem,Container} from '@chakra-ui/react'
 import { createTheme } from '@mui/material/styles';
-import ArticleChild from "./articleChild";
 import React from "react";
 import { useRouter } from "next/router";
 import ArticleChildBox from "./articleChildBox";

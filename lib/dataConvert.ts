@@ -1,6 +1,5 @@
 
 import * as cheerio from 'cheerio';
-import { getDomainLocale } from 'next/dist/shared/lib/router/router';
 import { IArticle, ITocs } from '../interface/article';
 import { IBreadCrumbData } from '../interface/domestic';
 

@@ -4,15 +4,10 @@ import {
   Stack,
   Heading,
   Flex,
-  Text,
   Button,
   useDisclosure,
-  Icon,
   Link
 } from "@chakra-ui/react";
-import {
-    AiFillInstagram
-  } from 'react-icons/ai';
 import NextImage from 'next/image'
 import NextLink from 'next/link'
 const Header = () => {

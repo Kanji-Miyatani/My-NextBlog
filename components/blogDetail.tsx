@@ -1,4 +1,3 @@
-import { GetStaticProps } from "next";
 import { IArticle } from "../interface/article";
 import {Box,Heading,Text} from '@chakra-ui/react';
 import 'highlight.js/styles/vs2015.css';

@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
-  Box, Flex, Heading, Text, Stack, Avatar, Image,Badge,Link
+  Box, Flex, Heading, Text, Stack, Badge,Link
 } from '@chakra-ui/react';
 import NextLink from 'next/link';
 import NextImage from 'next/image'

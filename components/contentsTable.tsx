@@ -1,5 +1,5 @@
 import React from 'react'
-import {Box,color,Text,List,ListItem} from '@chakra-ui/react'
+import {Box,Text,List,ListItem} from '@chakra-ui/react'
 import {  ITocs } from '../interface/article'
 import { Link as Scroll } from 'react-scroll';
 type Prop={

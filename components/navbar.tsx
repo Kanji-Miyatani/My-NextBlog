@@ -1,4 +1,4 @@
-import React, { ChangeEvent, ReactNode, useState } from 'react';
+import React, {  ReactNode, useState } from 'react';
 import {
   IconButton,
   Box,
@@ -18,8 +18,7 @@ import {
   InputRightElement,
   InputGroup,
   Button,
-  Input,
-  Heading
+  Input
 } from '@chakra-ui/react';
 import NextLink from 'next/link'
 import {FaSearch} from "react-icons/fa"
@@ -232,7 +231,7 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
     <Box pl="2" pt="2">
       <NextLink href="/">
         <a>
-        <Image src="/images/YakanBlogLogo-min.png"
+        <Image src="/images/YakanBlogLogo.png"
             width={180}
             height={40}
             alt="ロゴ"
