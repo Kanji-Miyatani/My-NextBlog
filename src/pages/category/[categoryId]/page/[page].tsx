@@ -1,4 +1,4 @@
-import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
+import { GetStaticPaths, GetStaticProps, GetStaticPropsResult, NextPage } from 'next';
 import React from 'react'
 import { GetAllCategories, GetCategoryName, getPostsCountInCategories, getPostsInCategories } from '../../../../../lib/posts';
 import { createTheme } from '@mui/material/styles';
@@ -9,7 +9,7 @@ import BlogList from '../../../../../components/blogList';
 import Seo from "../../../../../components/Seo";
 import { CreateBreadCrumbdata } from '../../../../../lib/dataConvert';
 
-const MAX_PAGE =15 as const;
+const MAX_PAGE =1 as const;
 type Prop={
   data:IMicroCMSBlogRes,
   page:number,

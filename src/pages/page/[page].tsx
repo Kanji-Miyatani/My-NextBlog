@@ -11,7 +11,7 @@ import Seo from "../../../components/Seo";
 import {Box,Heading,Text,Grid,GridItem,Container} from '@chakra-ui/react'
 import BlogList from "../../../components/blogList";
 import { CreateBreadCrumbdata } from "../../../lib/dataConvert";
-const MAX_PAGE =15 as const;
+const MAX_PAGE =10 as const;
 type Prop={
     datas:IMicroCMSBlogRes,
     page:number

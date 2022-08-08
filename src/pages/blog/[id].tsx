@@ -6,6 +6,7 @@ import { ParsedUrlQuery } from 'node:querystring';
 import BlogDetail from '../../../components/blogDetail';
 import Seo from '../../../components/Seo';
 import { CreateBreadCrumbdata } from '../../../lib/dataConvert';
+import BlogList from '../../../components/blogList';
 //取得データ
 interface Props {
   item: IArticle
@@ -21,7 +22,6 @@ export default function Post({item}:Props) {
         <Layout breadCrumbData={CreateBreadCrumbdata(item.title,`/blog/${item.id}`,item.category?.name,`/category/${item.category?.id}/page/1`,)}> 
           <Seo title={item.title} isHome={false} imageUrl={item.eyecatch.url} description={`${item.title}|${item.description}`} path={`blog/${item.id}`}/>
           <BlogDetail article={item}></BlogDetail>
-          
         </Layout>
         )
 }

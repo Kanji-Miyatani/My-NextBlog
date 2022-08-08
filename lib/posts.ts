@@ -1,8 +1,7 @@
 import {client} from  "./client";
 import {IArticle, ICategories, ICategoryCount, IMicroCMSBlogRes, IMicroCMSCategoriesRes, IMicroCMSRes, IPaths,ITags,ITocs} from "../interface/article"
 import * as cheerio from 'cheerio';
-import hljs from 'highlight.js/lib/core';
-import javascript from 'highlight.js/lib/languages/javascript';
+import hljs from 'highlight.js';
 
 export async function getAllPosts():Promise<Array<IArticle>>{
     const data =await client.get({

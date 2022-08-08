@@ -27,8 +27,7 @@ const BlogList =({datas,page,maxCountInPage}:Prop)=>{
     const router = useRouter();
     const handlePageChange = (event: React.ChangeEvent<unknown>, page: number) => {
         let {pathname} = router;
-        delete router.query.page;
-        pathname = pathname.replace(/\[page\]/,`${page}`);
+        router.query.page=String(page);
         router.push({
             pathname:pathname,
             query:router.query
