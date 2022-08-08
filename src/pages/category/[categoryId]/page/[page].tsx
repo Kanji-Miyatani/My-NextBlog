@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext, NextPage } from 'next';
-=======
-import { GetStaticPaths, GetStaticProps, GetStaticPropsResult, NextPage } from 'next';
->>>>>>> 77b9b24c9c0f79fbea498766a8c4805ede2b6809
 import React from 'react'
 import { GetAllCategories, GetCategoryName, getPostsCountInCategories, getPostsInCategories } from '../../../../../lib/posts';
 import { createTheme } from '@mui/material/styles';
@@ -12,7 +8,6 @@ import { Box,Heading} from '@chakra-ui/react';
 import BlogList from '../../../../../components/blogList';
 import Seo from "../../../../../components/Seo";
 import { CreateBreadCrumbdata } from '../../../../../lib/dataConvert';
-import { ParsedUrlQuery } from 'node:querystring';
 
 const MAX_PAGE =1 as const;
 type Prop={
