@@ -17,6 +17,7 @@ export interface IArticle {
         name: string
     }
     Tags: Array<ITags>
+    RelatedLinks:IArticle[]
   }
 
   export interface ITags{
