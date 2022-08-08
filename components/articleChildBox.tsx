@@ -47,7 +47,7 @@ function ArticleChildBox({id,title,description,imageSrc,blogTag,date,categoryNam
                           ):<></>
                         }
                         {blogTag.map((tag,i) => (
-                          <Badge ml={1} key={i} h="1.1rem" mt="2px"><Box>{tag.tag}</Box></Badge>
+                          tag.tag==undefined?<></>:<Badge ml={1} key={i} h="1.1rem" mt="2px"><Box>{tag.tag}</Box></Badge>
                       ))}
                     </Flex>
                   <NextImage
