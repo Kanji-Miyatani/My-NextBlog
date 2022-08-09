@@ -1,7 +1,24 @@
 import {client} from  "./client";
 import {IArticle, ICategories, ICategoryCount, IMicroCMSBlogRes, IMicroCMSCategoriesRes, IMicroCMSRes, IPaths,ITags,ITocs} from "../interface/article"
 import * as cheerio from 'cheerio';
-import hljs from 'highlight.js';
+import hljs from 'highlight.js/lib/core';
+import javascript from 'highlight.js/lib/languages/javascript';
+import csharp from 'highlight.js/lib/languages/csharp';
+import typescript from 'highlight.js/lib/languages/typescript';
+import css from 'highlight.js/lib/languages/css';
+import json from 'highlight.js/lib/languages/json';
+import rust from 'highlight.js/lib/languages/rust';
+import xml from 'highlight.js/lib/languages/xml';
+import sql from 'highlight.js/lib/languages/sql';
+
+hljs.registerLanguage('javascript', javascript);
+hljs.registerLanguage('csharp', csharp);
+hljs.registerLanguage('typescript', typescript);
+hljs.registerLanguage('css', css);
+hljs.registerLanguage('json', json);
+hljs.registerLanguage('rust', rust);
+hljs.registerLanguage('xml', xml);
+hljs.registerLanguage('sql', sql);
 
 export async function getAllPosts():Promise<Array<IArticle>>{
     const data =await client.get({

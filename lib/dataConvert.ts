@@ -26,4 +26,4 @@ export const CreateBreadCrumbdata=(nowPage:string="",nowPagePath:string="",paren
     parentPage:parentPage,
     parentPagePath:parentPagePath
   }
-}
+} 

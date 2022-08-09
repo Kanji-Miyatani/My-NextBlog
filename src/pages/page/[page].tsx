@@ -1,8 +1,7 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
-import { IMicroCMSBlogRes, IMicroCMSRes } from "../../../interface/article";
+import { IMicroCMSBlogRes } from "../../../interface/article";
 import { getAllPosts, getPostsInPages } from "../../../lib/posts";
 import Layout from '../../../components/layout';
-import { createTheme } from '@mui/material/styles';
 import Seo from "../../../components/Seo";
 import BlogList from "../../../components/blogList";
 import { CreateBreadCrumbdata } from "../../../lib/dataConvert";
@@ -12,14 +11,6 @@ type Prop={
     page:number
 }
 
-
-export const theme = createTheme({
-  palette: {
-    primary: {
-      main: '#ff8e88',
-    },
-  },
-});
 const DynamicPage:NextPage<Prop> =({datas,page})=>{
     const articles = datas.contents;
     return(

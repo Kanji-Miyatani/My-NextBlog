@@ -1,10 +1,7 @@
-import { IMicroCMSBlogRes, IMicroCMSRes } from "../interface/article";
-import { getAllPosts, getPostsInPages } from "../lib/posts";
-import { Pagination } from '@mui/material';
-import Image from 'next/image'
+import { IMicroCMSBlogRes } from "../interface/article";
+import ReactPaginate from 'react-paginate';
 import styles from '../src/styles/Home.module.css'
-import {Box,Heading,Text,Grid,GridItem,Container} from '@chakra-ui/react'
-import { createTheme } from '@mui/material/styles';
+import {Box,Grid,GridItem} from '@chakra-ui/react'
 import React from "react";
 import { useRouter } from "next/router";
 import ArticleChildBox from "./articleChildBox";
@@ -14,24 +11,17 @@ type Prop={
     page:number,
     maxCountInPage:number
 }
-export const theme = createTheme({
-  palette: {
-    primary: {
-      main: '#ff8e88',
-    },
-  },
-});
-const BlogList =({datas,page,maxCountInPage}:Prop)=>{
+
+ const BlogList =({datas,page,maxCountInPage}:Prop)=>{
     var totalPagesCount = Math.ceil(datas.totalCount/maxCountInPage);
     const router = useRouter();
-    const handlePageChange = (event: React.ChangeEvent<unknown>, page: number) => {
+    const handlePaginate = (selectedItem: { selected: number }) => {
         let {pathname} = router;
-        router.query.page=String(page);
+        router.query.page=String(selectedItem.selected+1);
         router.push({
-            pathname:pathname,
-            query:router.query
-        })
-    }
+        pathname:pathname,
+        query:router.query
+    })}
     const articles = datas.contents;
     return(
         <>
@@ -59,7 +49,31 @@ const BlogList =({datas,page,maxCountInPage}:Prop)=>{
                 </Grid>
                 </Box>
                 <Box mt={4}>
-                    <Pagination onChange={handlePageChange} className={styles.pagination} count={totalPagesCount} page={page} siblingCount={3} />
+                    <ReactPaginate
+                        breakLabel="..."
+                        nextLabel=">"
+                        onPageChange={handlePaginate}
+                        pageRangeDisplayed={5}
+                        pageCount={totalPagesCount}
+                        previousLabel="<"
+                        pageClassName='page-item' //各子要素(li要素)のクラス名
+                        pageLinkClassName='page-link' //ページネーションのリンクのクラス名
+                        activeClassName='active'
+                        className="pagination" 
+                        containerClassName='pagination' //ページネーションリンクの親要素のクラス名
+                         // 戻る・進む関連
+                        previousClassName="page-item" // li
+                        nextClassName="page-item" // li
+                        previousLinkClassName="previous-link"
+                        nextLinkClassName="next-link"
+                    
+                        // 先頭 or 末尾に行ったときにそれ以上戻れ(進め)なくする
+                        disabledClassName="disabled-button d-none"
+                    
+                        // 中間ページの省略表記関連
+                        breakClassName="page-item"
+                        breakLinkClassName="page-link"
+                    />
                 </Box>
             </div>
         </>
@@ -67,4 +81,3 @@ const BlogList =({datas,page,maxCountInPage}:Prop)=>{
 }
 
 export default BlogList;
-
