@@ -1,7 +1,6 @@
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext, NextPage } from 'next';
 import React from 'react'
 import { GetAllCategories, GetCategoryName, getPostsCountInCategories, getPostsInCategories } from '../../../../../lib/posts';
-import { createTheme } from '@mui/material/styles';
 import { ICategories, IMicroCMSBlogRes } from '../../../../../interface/article';
 import Layout from '../../../../../components/layout';
 import { Box,Heading} from '@chakra-ui/react';
@@ -17,13 +16,6 @@ type Prop={
   categoryId:string
 }
 
-export const theme = createTheme({
-palette: {
-  primary: {
-    main: '#ff8e88',
-  },
-},
-});
 const CategoryPage:NextPage<Prop> =({categoryName,data,page,categoryId})=>{
   return(
       <>

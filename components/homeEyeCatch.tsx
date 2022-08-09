@@ -1,6 +1,7 @@
 import { Container, chakra,Image, HTMLChakraProps,Heading ,Text, Box,Flex,Collapse,keyframes} from '@chakra-ui/react';
 import { motion, isValidMotionProp,useAnimation, HTMLMotionProps } from 'framer-motion';
 import { useState } from 'react';
+import NextImage from "next/image"
   
 const ChakraBox = chakra(motion.div, {
   /**
@@ -55,7 +56,7 @@ const MotionBackBox: React.FC<MotionBoxProps> = motion(chakra.div);
                 width="5rem"
                 height="5rem"
             >
-            <Image src='/images/やかんの無料アイコン素材.png' alt="やかんのアイコン"></Image>
+            <NextImage src='/images/やかんの無料アイコン素材.png' objectFit='cover' height="100px" width="100px" alt="やかんのアイコン"></NextImage>
             </MotionBox>
              <Collapse in={isClicked}>
                 <Box m="1">
