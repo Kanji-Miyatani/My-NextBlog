@@ -56,7 +56,7 @@ const MotionBackBox: React.FC<MotionBoxProps> = motion(chakra.div);
                 width="5rem"
                 height="5rem"
             >
-            <NextImage src='/images/やかんの無料アイコン素材.png' objectFit='cover' height="100px" width="100px" alt="やかんのアイコン"></NextImage>
+            <NextImage src='/images/YakanLogo-min.png' objectFit='cover' height="100px" width="100px" alt="やかんのアイコン"></NextImage>
             </MotionBox>
              <Collapse in={isClicked}>
                 <Box m="1">

@@ -29,7 +29,7 @@ const Header = () => {
         <NextLink href="/">
           <Link>
             <Heading as="h1" size="lg" letterSpacing={"tighter"}>
-                <NextImage src="/images/YakanBlogLogo-min.png"
+                <NextImage src="/images/YakanBlogHead-min.png"
                     width={220}
                     height={49}
                     />

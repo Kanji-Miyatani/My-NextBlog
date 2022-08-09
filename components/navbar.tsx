@@ -231,7 +231,7 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
     <Box pl="2" pt="2">
       <NextLink href="/">
         <a>
-        <Image src="/images/YakanBlogLogo.png"
+        <Image src="/images/YakanBlogHead-min.png"
             width={180}
             height={40}
             alt="ロゴ"
