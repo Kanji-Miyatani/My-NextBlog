@@ -181,7 +181,7 @@ interface NavItemProps extends FlexProps {
 //メニューのアイテム
 const NavItem = ({ icon,link, children, ...rest }: NavItemProps) => {
   return (
-    <NextLink href={link}>
+    <NextLink href={link} prefetch={false}>
         <Link  style={{ textDecoration: 'none' }} _focus={{ boxShadow: 'none' }}>
         <Flex
           align="center"
