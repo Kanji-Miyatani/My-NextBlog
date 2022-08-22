@@ -1,20 +1,19 @@
-import { IArticle } from "../interface/article";
+import { IArticle, ITocs } from "../interface/article";
 import {Box,Heading,Text} from '@chakra-ui/react';
 import 'highlight.js/styles/vs2015.css';
-import { getTocs } from "../lib/dataConvert";
 import ContentsTable from "./contentsTable";
 import {ToDateString} from "../lib/dateService";
 import NextImage from "next/image"
 type Props={
     article:IArticle
+    tocs : ITocs[]
 }
 
-const BlogDetail=({article}:Props)=>{
+const BlogDetail=({article,tocs}:Props)=>{
     //目次の作成
     const title = article.title;
     const date =new Date(article.createdAt);
     const html = article.content;
-    const tocs = getTocs(article);
     return(
         <Box bgColor={"white"} minW={"98%"} shadow="sm" px={{sm:"2rem",base:"2px"}} py="2rem">
             <Box pb={"20px"} mx="5px" >

@@ -54,7 +54,7 @@ export interface IMicroCMSCategoriesRes extends IMicroCMSRes{
 }
 
 export interface ITocs{
-  text:string,
+  text:string | null,
   id:string,
   name:string,
 }

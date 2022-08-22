@@ -1,15 +1,7 @@
 import { Container, chakra, HTMLChakraProps,Heading ,Text, Box,Flex,Collapse,keyframes} from '@chakra-ui/react';
-import { motion, isValidMotionProp,useAnimation, HTMLMotionProps } from 'framer-motion/dist/index';
+import { motion,useAnimation, HTMLMotionProps } from 'framer-motion';
 import { useState } from 'react';
 import NextImage from "next/image"
-  
-const ChakraBox = chakra(motion.div, {
-  /**
-   * Allow motion props and the children prop to be forwarded.
-   * All other chakra props not matching the motion props will still be forwarded.
-   */
-  shouldForwardProp: (prop) => isValidMotionProp(prop) || prop === 'children',
-});
   
 export default function HomeEyeCatch() {
     const [isClicked,setIsClicked]=useState(false);
@@ -40,7 +32,7 @@ const MotionBackBox: React.FC<MotionBoxProps> = motion(chakra.div);
  
      p="20px" h="auto" minH="270px" minW="100%" display="flex" flexDirection="column" alignItems="center" justifyContent="center" 
       bgImage="images/トップ背景-min.png" bgSize="880px 100%" bgRepeat="repeat-x">
-        <Heading as="h1" color="white" fontFamily="serif">Yakan君の一言雑学</Heading>
+        <Heading as="h1" color="white" fontFamily="serif">やかんのブログ</Heading>
         <Flex h="100%" w="100%" flexDir={{md:"row",base:"row"}} alignItems="end" justifyContent="center">
             <MotionBox
                 onClick={OnClickEvent}
@@ -62,7 +54,7 @@ const MotionBackBox: React.FC<MotionBoxProps> = motion(chakra.div);
                 <Box m="1">
                     <Box 
                     m="30px" noOfLines={{md:4,base:6}} fontFamily="serif" fontSize="1.4rem" fontWeight="medium" bgColor="white" boxShadow="0 0 14px 15px white" textAlign="center" borderRadius="10%" p="1rem" w={{md:"300px",base:"150px"}}>
-                        {"切手を舐めた時の摂取カロリーは２kcal"}
+                        {"自己紹介-"}<a href='/'>aaaa</a>
                     </Box>
                 </Box>
              </Collapse>
