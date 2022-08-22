@@ -5,7 +5,7 @@ import Layout from '../../../components/layout';
 import Seo from "../../../components/Seo";
 import BlogList from "../../../components/blogList";
 import { CreateBreadCrumbdata } from "../../../lib/dataConvert";
-const MAX_PAGE =10 as const;
+const MAX_PAGE =12 as const;
 type Prop={
     datas:IMicroCMSBlogRes,
     page:number

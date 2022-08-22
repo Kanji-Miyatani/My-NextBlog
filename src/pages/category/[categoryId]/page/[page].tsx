@@ -8,7 +8,7 @@ import BlogList from '../../../../../components/blogList';
 import Seo from "../../../../../components/Seo";
 import { CreateBreadCrumbdata } from '../../../../../lib/dataConvert';
 
-const MAX_PAGE =1 as const;
+const MAX_PAGE =12 as const;
 type Prop={
   data:IMicroCMSBlogRes,
   page:number,

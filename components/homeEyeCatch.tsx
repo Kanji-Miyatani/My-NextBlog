@@ -1,5 +1,5 @@
-import { Container, chakra,Image, HTMLChakraProps,Heading ,Text, Box,Flex,Collapse,keyframes} from '@chakra-ui/react';
-import { motion, isValidMotionProp,useAnimation, HTMLMotionProps } from 'framer-motion';
+import { Container, chakra, HTMLChakraProps,Heading ,Text, Box,Flex,Collapse,keyframes} from '@chakra-ui/react';
+import { motion, isValidMotionProp,useAnimation, HTMLMotionProps } from 'framer-motion/dist/index';
 import { useState } from 'react';
 import NextImage from "next/image"
   

@@ -41,13 +41,24 @@ a {
   padding: 0.5em 0;
   list-style-type: none!important;
 }
+.blog-container ol{
+  margin-top: 0.5rem;
+  border: solid 2px rgb(199, 213, 217);
+  border-radius: 5px;
+  padding: 0.5em 1em 0.5em 2em;
+  position: relative;
+}
+.blog-container ol> li{
+  line-height: 1.5;
+  padding: 0.5em 0;
+}
 .blog-container>h2{
     font-size: 1.5rem;
     font-weight: bold;
     border-bottom: 1px solid #cdd3d8;
 
     margin-bottom: 1rem;
-    margin-top: 2rem;
+    margin-top: 3rem;
 }
 .blog-container>h1{
     background: #f7f7f7;
@@ -59,10 +70,18 @@ a {
     font-weight: bold;
     
     margin-bottom: 1.5rem;
-    margin-top: 3rem;
+    margin-top: 3.5rem;
 }
 .blog-container img{
   margin: 1.5rem 0;
+}
+
+.blog-container code:not(.hljs){
+  margin-bottom: 0;
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+  padding:0.5rem 4px;
+  background-color: #e2dfdf;
 }
 /* スクロールバー */
 ::-webkit-scrollbar {
