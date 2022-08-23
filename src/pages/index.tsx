@@ -122,7 +122,7 @@ const Home: NextPage<Props> = ({articles}:Props) => {
                       }
                     </Grid>
                     <Box textAlign="center" mt="1rem">
-                      <NextLink href={`category/${categoryArticle.categoryId}/page/1`}>
+                      <NextLink href={`/category/${categoryArticle.categoryId}/page/1`}>
                         <a>
                         <Button>{`${categoryArticle.categoryName}の記事一覧へ`}
                           <Box m={1}><GrNext color="gray" /></Box>

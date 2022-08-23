@@ -232,6 +232,7 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
       <NextLink href="/">
         <a>
         <Image src="/images/YakanBlogHead-min.png"
+            priority={true}
             width={180}
             height={40}
             alt="ロゴ"
