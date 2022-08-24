@@ -78,7 +78,7 @@ const Home: NextPage<Props> = ({articles}:Props) => {
             }
           </Grid>
           <Box textAlign="center" mt="1rem">
-            <NextLink href="/page/1">
+            <NextLink href="/page/1" prefetch={false}>
               <a>
               <Button>もっと見る
                 <Box m={1}><GrNext color="gray" /></Box>

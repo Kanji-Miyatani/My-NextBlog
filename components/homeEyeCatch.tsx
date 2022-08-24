@@ -9,11 +9,11 @@ export default function HomeEyeCatch() {
     const OnClickEvent = ()=>{
         //クリック時のやかんの動き
         yakanControl.start({
-            scaleX: [1,0.9,0.9,0.9,0.9,0.9, 1.2, 1],
-            scaleY: [1,0.8,0.8,0.75,0.75,0.7, 1.1, 1],
-            x: [0,1,-1,2,-2,0, 0, 0],
+            scaleX: [1,0.9,0.9,0.9,0.9,0.9, 1.3, 1],
+            scaleY: [1,0.7,0.7,0.65,0.6,0.55, 1.2, 1],
+            x: [0,2,-2,2,-2,0, 0, 0],
             });
-        setTimeout(()=>setIsClicked(true),1500);
+        setTimeout(()=>setIsClicked(true),2010);
     }
     type Merge<P, T> = Omit<P, keyof T> & T
 type MotionBoxProps = Merge<HTMLChakraProps<'div'>, HTMLMotionProps<'div'>>
@@ -39,7 +39,7 @@ const MotionBackBox: React.FC<MotionBoxProps> = motion(chakra.div);
                 animate={yakanControl}
                 // @ts-ignore no problem in operation, although type error appears.
                 transition={{
-                duration: 1.5,
+                duration: 2,
                 }}
                 _hover={{cursor:"pointer"}}
                 display="flex"

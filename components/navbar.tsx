@@ -229,7 +229,7 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
       justifyContent="space-between"
       {...rest}>
     <Box pl="2" pt="2">
-      <NextLink href="/">
+      <NextLink href="/" prefetch={false}>
         <a>
         <Image src="/images/YakanBlogHead-min.png"
             priority={true}
