@@ -34,7 +34,7 @@ function ArticleChildBox({id,title,description,imageSrc,blogTag,date,categoryNam
   description = description?.length>MAX_DESCRIPTION_LENGTH ? description.substring(0,MAX_DESCRIPTION_LENGTH)+"...":description;
  
     return (
-        <Box className="article-child-box" opacity={loaded?1:0} transition={shown?"opacity 0.2s,box-shadow 0.2s":"opacity 1.4s,box-shadow 0.2s"} w={{sm:264,base:"100%"}} h={{sm:284,base:"72vw"}} mx="auto" bg="white" boxShadow="md" _hover={{boxShadow:"xl",opacity:"0.7"}} rounded="md" p="6" overflow="hidden">
+        <Box className="article-child-box" opacity={loaded?1:0} transition={shown?"opacity 0.2s,box-shadow 0.3s":"opacity 1.7s,box-shadow 0.3s"} w={{sm:264,base:"100%"}} h={{sm:284,base:"72vw"}} mx="auto" bg="white" boxShadow="md" _hover={{boxShadow:"xl",opacity:"0.7"}} rounded="md" p="6" overflow="hidden">
           <NextLink href={`/blog/${id}`} >
             <a>
                 <Box position="relative" maxH={{sm:165,base:"45vw"}} h={{sm:165,base:"45vw"}} mt="-6" mx="-6" pos="relative" overflow='hidden'>
