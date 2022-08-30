@@ -16,7 +16,7 @@ const DynamicPage:NextPage<Prop> =({datas,page})=>{
     return(
         <>
          <Layout breadCrumbData={CreateBreadCrumbdata("ブログ一覧",`/page/${page}`,)}>
-            <Seo title='ブログ一覧' isHome={true} imageUrl={""} description="やかんブログの記事一覧です。" path="page/1" />
+            <Seo title='ブログ一覧' isHome={true} imageUrl={"https://yakanblog.com/images/YakanBlogTop.png"} description="やかんブログの記事一覧です。" path="page/1" />
             <BlogList  datas={datas} page={page} maxCountInPage={MAX_PAGE} />
          </Layout>
         </>
