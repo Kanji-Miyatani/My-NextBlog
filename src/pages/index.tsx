@@ -49,7 +49,7 @@ const Home: NextPage<Props> = ({articles}:Props) => {
   },[])
   return (
     <Layout breadCrumbData={CreateBreadCrumbdata()}>
-      <Seo title='ホーム' isHome={true} imageUrl={"https://yakanblog.com/images/%E3%83%88%E3%83%83%E3%83%97%E8%83%8C%E6%99%AF-min.png"} description="やかんのブログ｜トップページ" path="" />
+      <Seo title='ホーム' isHome={true} imageUrl={"https://yakanblog.com/images/YakanBlogTop.png"} description="やかんのブログ｜トップページ" path="" />
       <div className={styles.container}>
        <Box w={"100%"} position="relative" minH="auto">
         <HomeEyeCatch/>
