@@ -1,7 +1,7 @@
 import {Box,Text} from "@chakra-ui/react"
 import { IBreadCrumbData } from "../interface/domestic"
-import BreadCrumb from "./breadCrumb"
-import MyProfile from "./myProfile"
+import BreadCrumb from "./BreadCrumb"
+import MyProfile from "./MyProfile"
 type Props={
   breadCrumbData:IBreadCrumbData
 }

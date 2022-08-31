@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://yakanblog.com
+
+# Sitemaps
+Sitemap: https://yakanblog.com/sitemap.xml

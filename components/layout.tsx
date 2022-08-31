@@ -1,7 +1,7 @@
 import { Box } from '@chakra-ui/react'
-import Nav from './navbar'
-import Header from './header';
-import Footer from './footer';
+import Nav from './Navbar'
+import Header from './Header';
+import Footer from './Footer';
 import { IBreadCrumbData } from '../interface/domestic';
 type Props = {
     children?:React.ReactNode

@@ -35,7 +35,7 @@ import {VscDebugBreakpointLogUnverified} from "react-icons/vsc"
 import { IconType } from 'react-icons';
 import { ReactText } from 'react';
 import Image from 'next/image'
-import MyProfile from './myProfile';
+import MyProfile from './MyProfile';
 import {useRouter} from 'next/router' 
 
 
