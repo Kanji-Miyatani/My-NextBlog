@@ -1,14 +1,14 @@
 import type { NextPage } from 'next'
 import styles from '../styles/Home.module.css'
-import Layout from '../../components/layout';
-import ArticleChildBox from '../../components/articleChildBox';
+import Layout from '../../components/Layout';
+import ArticleChildBox from '../../components/ArticleChildBox';
 import { client } from '../../lib/client';
 import {IArticle} from '../../interface/article';
 import NextLink from 'next/link';
-import {Box,Heading,Text,Grid,GridItem, Button, Flex, List, ListItem, Tabs, TabList, Tab, TabPanels, TabPanel,} from '@chakra-ui/react'
+import {Box,Heading,Grid,GridItem, Button,  Tabs, TabList, Tab, TabPanels, TabPanel,} from '@chakra-ui/react'
 import {GrNext} from 'react-icons/gr'
 import Seo from '../../components/Seo';
-import HomeEyeCatch from '../../components/homeEyeCatch';
+import HomeEyeCatch from '../../components/HomeEyeCatch';
 import { CreateBreadCrumbdata } from '../../lib/dataConvert';
 
 type Props ={

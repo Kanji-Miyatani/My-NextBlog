@@ -7,7 +7,7 @@ import BlogDetail from '../../../components/blogDetail';
 import Seo from '../../../components/Seo';
 import { CreateBreadCrumbdata } from '../../../lib/dataConvert';
 import {  Grid, GridItem, Heading } from '@chakra-ui/react';
-import ArticleChildBox from '../../../components/articleChildBox';
+import ArticleChildBox from '../../../components/ArticleChildBox';
 //取得データ
 interface Props {
   item: IArticle

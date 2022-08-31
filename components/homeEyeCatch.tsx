@@ -16,15 +16,15 @@ export default function HomeEyeCatch() {
         setTimeout(()=>setIsClicked(true),2010);
     }
     type Merge<P, T> = Omit<P, keyof T> & T
-type MotionBoxProps = Merge<HTMLChakraProps<'div'>, HTMLMotionProps<'div'>>
+    type MotionBoxProps = Merge<HTMLChakraProps<'div'>, HTMLMotionProps<'div'>>//ChacraUIとframerMotionコンポーネントの関連付け
 
-const MotionBox: React.FC<MotionBoxProps> = motion(chakra.div);
-const animationKeyframes = keyframes`
-  0% {  background-position: 0% 0; }
-  100% { background-position:-880px 0;}
-`;
-const animation = `${animationKeyframes} 100s linear infinite`;
-const MotionBackBox: React.FC<MotionBoxProps> = motion(chakra.div);
+    const MotionBox: React.FC<MotionBoxProps> = motion(chakra.div);
+    //背景の動き
+    const animationKeyframes = keyframes`
+      0% {  background-position: 0% 0; }
+      100% { background-position:-880px 0;}
+    `;
+    const animation = `${animationKeyframes} 100s linear infinite`;
   return (
     <Container 
     as ={motion.div}

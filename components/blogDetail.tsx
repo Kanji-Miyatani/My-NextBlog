@@ -1,9 +1,10 @@
 import { IArticle, ITocs } from "../interface/article";
 import {Box,Heading,Text} from '@chakra-ui/react';
 import 'highlight.js/styles/vs2015.css';
-import ContentsTable from "./contentsTable";
+import ContentsTable from "./ContentsTable";
 import {ToDateString} from "../lib/dateService";
 import NextImage from "next/image"
+import styles from "./styles/BlogDetail.module.css"
 type Props={
     article:IArticle
     tocs : ITocs[]
@@ -27,7 +28,9 @@ const BlogDetail=({article,tocs}:Props)=>{
                 <ContentsTable tocs={tocs}/>
             </Box>
             <Box mt={"20px"} mx={{base:"10px",md:"0"}}>
-                <div className="blog-container" dangerouslySetInnerHTML={{__html:html}}/>
+                <Box>
+                    <div className={styles.blog_container} dangerouslySetInnerHTML={{__html:html}}/>
+                </Box>
             </Box>
         </Box>
     )
