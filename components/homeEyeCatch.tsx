@@ -31,7 +31,7 @@ export default function HomeEyeCatch() {
     animation={animation}
  
      p="20px" h="auto" minH="270px" minW="100%" display="flex" flexDirection="column" alignItems="center" justifyContent="center" 
-      bgImage="images/トップ背景-min.png" bgSize="880px 100%" bgRepeat="repeat-x">
+      bgImage="images/トップ背景-min-min.png" bgSize="880px 100%" bgRepeat="repeat-x">
         <Heading as="h1" color="white" fontFamily="serif">やかんのブログ</Heading>
         <Flex h="100%" w="100%" flexDir={{md:"row",base:"row"}} alignItems="end" justifyContent="center">
             <MotionBox
