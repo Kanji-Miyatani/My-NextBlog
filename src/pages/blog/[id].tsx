@@ -1,13 +1,13 @@
-import Layout from '../../../components/layout';
+import Layout from '../../../components/Layout';
 import { IArticle, ITocs} from '../../../interface/article';
 import {getAllPostIds, getPost, getTocs} from '../../../lib/posts';
 import { GetStaticProps, GetStaticPaths } from 'next'
 import { ParsedUrlQuery } from 'node:querystring';
-import BlogDetail from '../../../components/blogDetail';
+import BlogDetail from '../../../components/BlogDetail';
 import Seo from '../../../components/Seo';
 import { CreateBreadCrumbdata } from '../../../lib/dataConvert';
 import {  Grid, GridItem, Heading } from '@chakra-ui/react';
-import ArticleChildBox from '../../../components/articleChildBox';
+import ArticleChildBox from '../../../components/ArticleChildBox';
 //取得データ
 interface Props {
   item: IArticle

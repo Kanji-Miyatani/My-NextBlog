@@ -4,7 +4,7 @@ import styles from '../src/styles/Home.module.css'
 import {Box,Grid,GridItem} from '@chakra-ui/react'
 import React from "react";
 import { useRouter } from "next/router";
-import ArticleChildBox from "./articleChildBox";
+import ArticleChildBox from "./ArticleChildBox";
 
 type Prop={
     datas:IMicroCMSBlogRes,

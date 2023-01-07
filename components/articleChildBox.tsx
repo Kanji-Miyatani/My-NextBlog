@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {  useState } from 'react';
 import {
   Box, Flex, Heading, Text, Stack, Badge,Link
 } from '@chakra-ui/react';
@@ -22,13 +22,19 @@ interface IBlogChild{
 const MAX_DESCRIPTION_LENGTH=75;
 //記事一覧表示のアイテム
 function ArticleChildBox({id,title,description,imageSrc,blogTag,date,categoryName,categoryID}:IBlogChild) {
+  const [loaded,setLoaded]=useState(false);
+  const [shown,setShown]=useState(false);
+  const handleImageLoaded = ()=>{
+    setLoaded(true);
+    setTimeout(()=>{setShown(true)},200)
+  }
   var today = new Date();
   today.setMonth(today.getMonth()-1);
   var aMonthAgo =today;
   description = description?.length>MAX_DESCRIPTION_LENGTH ? description.substring(0,MAX_DESCRIPTION_LENGTH)+"...":description;
  
     return (
-        <Box className="article-child-box" w={{sm:264,base:"100%"}} h={{sm:264,base:"72vw"}} mx="auto" bg="white" boxShadow="md" _hover={{boxShadow:"xl",opacity:"0.8"}} rounded="md" p="6" overflow="hidden">
+        <Box className="article-child-box" opacity={loaded?1:0} transition={shown?"opacity 0.2s,box-shadow 0.3s":"opacity 1.7s,box-shadow 0.3s"} w={{sm:264,base:"100%"}} h={{sm:284,base:"72vw"}} mx="auto" bg="white" boxShadow="md" _hover={{boxShadow:"xl",opacity:"0.7"}} rounded="md" p="6" overflow="hidden">
           <NextLink href={`/blog/${id}`} >
             <a>
                 <Box position="relative" maxH={{sm:165,base:"45vw"}} h={{sm:165,base:"45vw"}} mt="-6" mx="-6" pos="relative" overflow='hidden'>
@@ -55,6 +61,7 @@ function ArticleChildBox({id,title,description,imageSrc,blogTag,date,categoryNam
                     alt="記事画像"
                     objectFit='cover'
                     layout='fill'
+                    onLoadingComplete={()=>handleImageLoaded()}
                   />
                 </Box>
             </a>
@@ -63,9 +70,9 @@ function ArticleChildBox({id,title,description,imageSrc,blogTag,date,categoryNam
            
             <NextLink href={`/blog/${id}`} >
             <a>
-              <Heading as='h4' color="gray.700" padding="auto" my="auto" size='md' noOfLines={2}>
-                {title}
-              </Heading>
+              <Text color="gray.700" padding="auto" my="auto" size='md' noOfLines={3}>
+                <b>{title}</b>
+              </Text>
             </a>
           </NextLink>
           </Stack>

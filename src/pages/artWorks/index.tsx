@@ -1,5 +1,5 @@
 import { NextPage } from "next";
-import Layout from "../../../components/layout";
+import Layout from "../../../components/Layout";
 import Seo from "../../../components/Seo";
 import { CreateBreadCrumbdata } from "../../../lib/dataConvert";
 

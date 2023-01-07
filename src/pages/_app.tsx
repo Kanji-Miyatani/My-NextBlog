@@ -3,7 +3,7 @@ import type { AppProps } from 'next/app'
 import { ChakraProvider } from '@chakra-ui/react'
 import { extendTheme } from "@chakra-ui/react";
 import usePageView from '../../lib/hooks/usePageView';
-import GooglrAnalytics from '../../components/googlrAnalytics';
+import GooglrAnalytics from '../../components/GooglrAnalytics';
 
 export const chakraTheme = extendTheme({
   styles: {

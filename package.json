@@ -4,13 +4,14 @@
   "private": true,
   "scripts": {
     "dev": " next dev ",
-    "build": "next build ",
+    "build": "next build",
+    "postbuild": "next-sitemap",
     "start": "next start",
     "lint": "next lint --dir src",
     "analyze": "ANALYZE=true next build"
   },
   "dependencies": {
-    "@chakra-ui/react": "^2.2.6",
+    "@chakra-ui/react": "^2.1.2",
     "@emotion/react": "^11.10.0",
     "@emotion/styled": "^11.10.0",
     "@types/gtag.js": "0.0.10",
@@ -32,7 +33,7 @@
     "@types/react-scroll": "^1.8.3",
     "eslint": "8.15.0",
     "eslint-config-next": "12.1.6",
-    "next-sitemap": "^3.1.16",
+    "next-sitemap": "^3.1.21",
     "react-scroll": "^1.8.7",
     "typescript": "4.6.4"
   }

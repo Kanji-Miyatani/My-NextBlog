@@ -35,7 +35,7 @@ import {VscDebugBreakpointLogUnverified} from "react-icons/vsc"
 import { IconType } from 'react-icons';
 import { ReactText } from 'react';
 import Image from 'next/image'
-import MyProfile from './myProfile';
+import MyProfile from './MyProfile';
 import {useRouter} from 'next/router' 
 
 
@@ -121,53 +121,57 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
       my={{ base: 0, md: 3}}
       ml={{ base: 0, md: 3}}
       pos={{ base: 'initial', md: "sticky"}}
-      h={{ base: "70vh", md: "100%"}}
-      minH={{ base: "70vh", md: "100%"}}
+      h={{ base: "70vh", md: "100vh"}}
+      minH={{ base: "70vh", md: "100vh"}}
       minW="0"
+      overflowY="auto"
       {...rest}>
-      <Flex h="10" display={{ base: 'flex', md: 'none' }} alignItems="center" mx="2" w={"100%"} justifyContent="space-between">
-        <CloseButton onClick={onClose} />
-      </Flex>
-      <Box 
-      className='navLinks' 
-      shadow={{md:"md",base:"none"}}
-      mb={2} mt={2} mx={2} p={"3px"} 
-      border={{md:"1px solid gray.100",base:"0"}} borderRadius="5px"
-      py="0.5rem">
-        <Flex alignItems="center" mx="0" my="2" justifyContent="space-between">
-          <InputGroup size='md'>
-            <Input onChange={(e)=>{setSWord(e.target.value)}}
-              pr='5rem'
-              placeholder='Search'
-            />
-            <InputRightElement width='3rem'>
-              <Button type="button" h='1.95rem' size='sm' onClick={onSerachSubmit}>
-                  <Icon
-                      fontSize="16"
-                      _groupHover={{
-                        color: 'white',
-                      }}
-                      as={FaSearch}
-                    />
-              </Button>
-            </InputRightElement>
-          </InputGroup>
+      <Box >
+
+        <Flex h="10" display={{ base: 'flex', md: 'none' }} alignItems="center" mx="2" w={"100%"} justifyContent="space-between">
+          <CloseButton onClick={onClose} />
         </Flex>
-        {LinkItems.map((link,i) => (
-          <NavItem key={i} pl="2" icon={link.icon} link={link.link}>
-            {link.name}
-          </NavItem>
-        ))}
-        <Divider color={useColorModeValue('gray.200', 'gray.700')} mb={2} mt={2} />
-        <Text px="3" py="1" color="gray.500">カテゴリ</Text>
-        {CategoryItems.map((link,i) => (
-          <NavItem icon={link.icon} key={i} link={link.link}>
-            {link.name}
-          </NavItem>
-        ))}
-      </Box>
-      <Box display={{md:"block",base:"none"}}>
-        <MyProfile/>
+        <Box 
+        className='navLinks' 
+        shadow={{md:"md",base:"none"}}
+        mb={2} mt={2} mx={2} p={"3px"} 
+        border={{md:"1px solid gray.100",base:"0"}} borderRadius="5px"
+        py="0.5rem">
+          <Flex alignItems="center" mx="0" my="2" justifyContent="space-between">
+            <InputGroup size='md'>
+              <Input onChange={(e)=>{setSWord(e.target.value)}}
+                pr='5rem'
+                placeholder='Search'
+              />
+              <InputRightElement width='3rem'>
+                <Button type="button" h='1.95rem' size='sm' onClick={onSerachSubmit}>
+                    <Icon
+                        fontSize="16"
+                        _groupHover={{
+                          color: 'white',
+                        }}
+                        as={FaSearch}
+                      />
+                </Button>
+              </InputRightElement>
+            </InputGroup>
+          </Flex>
+          {LinkItems.map((link,i) => (
+            <NavItem key={i} pl="2" icon={link.icon} link={link.link}>
+              {link.name}
+            </NavItem>
+          ))}
+          <Divider color={useColorModeValue('gray.200', 'gray.700')} mb={2} mt={2} />
+          <Text px="3" py="1" color="gray.500">カテゴリ</Text>
+          {CategoryItems.map((link,i) => (
+            <NavItem icon={link.icon} key={i} link={link.link}>
+              {link.name}
+            </NavItem>
+          ))}
+        </Box>
+        <Box display={{md:"block",base:"none"}}>
+          <MyProfile/>
+        </Box>
       </Box>
     </Box>
   );
@@ -229,9 +233,10 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
       justifyContent="space-between"
       {...rest}>
     <Box pl="2" pt="2">
-      <NextLink href="/">
+      <NextLink href="/" prefetch={false}>
         <a>
         <Image src="/images/YakanBlogHead-min.png"
+            priority={true}
             width={180}
             height={40}
             alt="ロゴ"

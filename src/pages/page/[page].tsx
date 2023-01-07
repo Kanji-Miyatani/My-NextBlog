@@ -1,9 +1,9 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { IMicroCMSBlogRes } from "../../../interface/article";
 import { getAllPosts, getPostsInPages } from "../../../lib/posts";
-import Layout from '../../../components/layout';
+import Layout from '../../../components/Layout';
 import Seo from "../../../components/Seo";
-import BlogList from "../../../components/blogList";
+import BlogList from "../../../components/BlogList";
 import { CreateBreadCrumbdata } from "../../../lib/dataConvert";
 const MAX_PAGE =12 as const;
 type Prop={
@@ -12,11 +12,10 @@ type Prop={
 }
 
 const DynamicPage:NextPage<Prop> =({datas,page})=>{
-    const articles = datas.contents;
     return(
         <>
          <Layout breadCrumbData={CreateBreadCrumbdata("ブログ一覧",`/page/${page}`,)}>
-            <Seo title='ブログ一覧' isHome={true} imageUrl={""} description="やかんブログの記事一覧です。" path="page/1" />
+            <Seo title='ブログ一覧' isHome={true} imageUrl={"https://yakanblog.com/images/YakanBlogTop.png"} description="やかんブログの記事一覧です。" path="page/1" />
             <BlogList  datas={datas} page={page} maxCountInPage={MAX_PAGE} />
          </Layout>
         </>
@@ -30,7 +29,7 @@ export const getStaticPaths:GetStaticPaths =async () => {
             params:{
                 page:`${i+1}`
             }
-        }
+        } 
     })
     return {paths,fallback:false }
 }

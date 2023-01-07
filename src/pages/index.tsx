@@ -1,14 +1,14 @@
 import type { NextPage } from 'next'
 import styles from '../styles/Home.module.css'
-import Layout from '../../components/layout';
-import ArticleChildBox from '../../components/articleChildBox';
+import Layout from '../../components/Layout';
+import ArticleChildBox from '../../components/ArticleChildBox';
 import { client } from '../../lib/client';
 import {IArticle} from '../../interface/article';
 import NextLink from 'next/link';
-import {Box,Heading,Text,Grid,GridItem, Button, Flex, List, ListItem, Tabs, TabList, Tab, TabPanels, TabPanel,} from '@chakra-ui/react'
+import {Box,Heading,Grid,GridItem, Button,  Tabs, TabList, Tab, TabPanels, TabPanel,} from '@chakra-ui/react'
 import {GrNext} from 'react-icons/gr'
 import Seo from '../../components/Seo';
-import HomeEyeCatch from '../../components/homeEyeCatch';
+import HomeEyeCatch from '../../components/HomeEyeCatch';
 import { CreateBreadCrumbdata } from '../../lib/dataConvert';
 
 type Props ={
@@ -49,7 +49,7 @@ const Home: NextPage<Props> = ({articles}:Props) => {
   },[])
   return (
     <Layout breadCrumbData={CreateBreadCrumbdata()}>
-      <Seo title='ホーム' isHome={true} imageUrl={""} description="やかんのブログ｜トップページ" path="" />
+      <Seo title='ホーム' isHome={true} imageUrl={"https://yakanblog.com/images/YakanBlogTop.png"} description="やかんのブログ｜トップページ" path="" />
       <div className={styles.container}>
        <Box w={"100%"} position="relative" minH="auto">
         <HomeEyeCatch/>
@@ -78,7 +78,7 @@ const Home: NextPage<Props> = ({articles}:Props) => {
             }
           </Grid>
           <Box textAlign="center" mt="1rem">
-            <NextLink href="/page/1">
+            <NextLink href="/page/1" prefetch={false}>
               <a>
               <Button>もっと見る
                 <Box m={1}><GrNext color="gray" /></Box>
@@ -122,7 +122,7 @@ const Home: NextPage<Props> = ({articles}:Props) => {
                       }
                     </Grid>
                     <Box textAlign="center" mt="1rem">
-                      <NextLink href={`category/${categoryArticle.categoryId}/page/1`}>
+                      <NextLink href={`/category/${categoryArticle.categoryId}/page/1`}>
                         <a>
                         <Button>{`${categoryArticle.categoryName}の記事一覧へ`}
                           <Box m={1}><GrNext color="gray" /></Box>

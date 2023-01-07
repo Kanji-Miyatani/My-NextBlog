@@ -2,9 +2,9 @@ import { GetStaticPaths, GetStaticProps, GetStaticPropsContext, NextPage } from 
 import React from 'react'
 import { GetAllCategories, GetCategoryName, getPostsCountInCategories, getPostsInCategories } from '../../../../../lib/posts';
 import { ICategories, IMicroCMSBlogRes } from '../../../../../interface/article';
-import Layout from '../../../../../components/layout';
+import Layout from '../../../../../components/Layout';
 import { Box,Heading} from '@chakra-ui/react';
-import BlogList from '../../../../../components/blogList';
+import BlogList from '../../../../../components/BlogList';
 import Seo from "../../../../../components/Seo";
 import { CreateBreadCrumbdata } from '../../../../../lib/dataConvert';
 
@@ -20,7 +20,7 @@ const CategoryPage:NextPage<Prop> =({categoryName,data,page,categoryId})=>{
   return(
       <>
        <Layout breadCrumbData={CreateBreadCrumbdata(categoryName,`/category/${categoryId}/page/1`,)}>
-        <Seo title={`カテゴリ:${categoryName}`} isHome={true} imageUrl={""} description={`やかんブログの${categoryName}の記事一覧です。`} path={`category/${categoryId}/page/1`} />
+        <Seo title={`カテゴリ:${categoryName}`} isHome={true} imageUrl={"https://yakanblog.com/images/YakanBlogTop.png"} description={`やかんブログの${categoryName}の記事一覧です。`} path={`category/${categoryId}/page/1`} />
         <Box textAlign="center">
           <Heading padding={3}>カテゴリ：{categoryName}</Heading>
         </Box>
