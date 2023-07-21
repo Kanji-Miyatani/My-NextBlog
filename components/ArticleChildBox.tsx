@@ -67,7 +67,6 @@ function ArticleChildBox({id,title,description,imageSrc,blogTag,date,categoryNam
             </a>
           </NextLink>
           <Stack mt="2" verticalAlign="center">
-           
             <NextLink href={`/blog/${id}`} >
             <a>
               <Text color="gray.700" padding="auto" my="auto" size='md' noOfLines={3}>

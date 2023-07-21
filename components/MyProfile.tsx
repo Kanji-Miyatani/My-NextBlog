@@ -28,7 +28,7 @@ const MyProfile=()=>{
           <Link target="_blank" rel="noopener noreferrer" href="https://twitter.com/yakan09025012">
             <Box _hover={{opacity:"0.7"}} p={1}><AiFillTwitterCircle color="#00acee" size="2.4rem" /></Box>
           </Link>
-          <Link href="" target="_blank" rel="noopener noreferrer">
+          <Link target="_blank" rel="noopener noreferrer" href="https://github.com/Kanji-Miyatani">
             <Box _hover={{opacity:"0.7",size:"2rem"}} p={1}><AiFillGithub color="#000000" size="2.4rem" /></Box>
           </Link>
        </Flex>
