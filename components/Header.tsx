@@ -20,7 +20,7 @@ const Header = () => {
       align="center"
       justify="space-between"
       wrap="wrap"
-      padding={3}
+      padding={2}
       bg="teal.400"
       color="white"
       display={{ base: "none", md: "flex" }}

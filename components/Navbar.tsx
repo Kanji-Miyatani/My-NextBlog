@@ -121,14 +121,14 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
       my={{ base: 0, md: 3}}
       ml={{ base: 0, md: 3}}
       pos={{ base: 'initial', md: "sticky"}}
-      h={{ base: "70vh", md: "100vh"}}
-      minH={{ base: "70vh", md: "100vh"}}
+      h={{ base: "100vh", md: "100vh"}}
+      minH={{ base: "100vh", md: "100vh"}}
       minW="0"
       overflowY="auto"
       {...rest}>
       <Box >
 
-        <Flex h="10" display={{ base: 'flex', md: 'none' }} alignItems="center" mx="2" w={"100%"} justifyContent="space-between">
+        <Flex h="10" display={{ base: 'flex', md: 'none' }} alignItems="center" mx="2" w={"95%"} justifyContent="space-between">
           <CloseButton onClick={onClose} />
         </Flex>
         <Box 
@@ -157,7 +157,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
             </InputGroup>
           </Flex>
           {LinkItems.map((link,i) => (
-            <NavItem key={i} pl="2" icon={link.icon} link={link.link}>
+            <NavItem key={i} pl="2" icon={link.icon} link={link.link} onClick={onClose}>
               {link.name}
             </NavItem>
           ))}
