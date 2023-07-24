@@ -1,6 +1,7 @@
 import { IMicroCMSBlogRes } from "../interface/article";
 import ReactPaginate from 'react-paginate';
-import styles from '../src/styles/Home.module.css'
+import styles from '../src/styles/Home.module.css';
+import pagination_styles from './styles/Pagination.module.css'
 import {Box,Grid,GridItem} from '@chakra-ui/react'
 import React from "react";
 import { useRouter } from "next/router";
