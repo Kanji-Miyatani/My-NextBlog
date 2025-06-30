@@ -7,8 +7,6 @@
 }
 .blog_container ul{
   margin-top: 0.5rem;
-  border: solid 2px rgb(199, 213, 217);
-  border-radius: 5px;
   padding: 0.5em 1em 0.5em 2em;
   position: relative;
 }
@@ -19,8 +17,6 @@
 }
 .blog_container ol{
   margin-top: 0.5rem;
-  border: solid 2px rgb(199, 213, 217);
-  border-radius: 5px;
   padding: 0.5em 1em 0.5em 2em;
   position: relative;
 }
