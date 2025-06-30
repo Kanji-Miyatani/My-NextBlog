@@ -124,13 +124,19 @@ export async function getSearchedPosts(sWord:string,offset:number,count:number):
 }
 
 export function getTocs(article:IArticle):ITocs[]{
-  const $ =  cheerio.load(article.content || "");
+  const $ = cheerio.load(article.content || "");
   const headings = $('h1, h2').toArray();
-   const toc :ITocs[]= headings.map((elem) => ({
-     text: (elem.children[0] as any).data || "",
-     id: elem.attribs.id,
-     name :elem.name
-   }));
+  const toc: ITocs[] = headings.map((elem) => {
+    const text = elem.children
+      .map((child: any) => child.data || child.children?.[0]?.data || "")
+      .join("").trim();
+
+    return {
+      text,
+      id: elem.attribs.id,
+      name: elem.name
+    };
+  });
  
   return toc;
 }

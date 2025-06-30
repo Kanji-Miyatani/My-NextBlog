@@ -24,7 +24,7 @@ export default function Post({item,tocs}:Props) {
         <Layout breadCrumbData={CreateBreadCrumbdata(item.title,`/blog/${item.id}`,item.category?.name,`/category/${item.category?.id}/page/1`,)}> 
           <Seo title={item.title} isHome={false} imageUrl={item.eyecatch.url} description={`${item.title}|${item.description}`} path={`blog/${item.id}`}/>
           <BlogDetail article={item} tocs={tocs}></BlogDetail>
-          <Heading  as="h4" fontSize={25} borderBottom="2px double gray" mx="auto" mt="1.5rem" mb="3" textAlign="center">関連記事</Heading>
+          <Heading as="h4" fontSize={25} borderBottom="2px double gray" mx="auto" mt="1.5rem" mb="3" textAlign="center">関連記事</Heading>
           <Grid className="container-" templateColumns={{lg:'repeat(3, 1fr)',md:'repeat(1, 1fr)',sm:'repeat(2, 1fr)',base:'repeat(1, 1fr)'}} gap={6} mt="5" h="auto">
                     {relatedLinks.length==0?
                     <></>:
